@@ -1,24 +1,15 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Portfolio of Devaharsha Gubbala, a healthcare reporting analyst specializing in claims analytics, dashboard reporting, data quality, and health informatics."
-    />
-    <meta name="theme-color" content="#071b2f" />
-    <meta property="og:title" content="Devaharsha Gubbala | Healthcare Reporting Analyst" />
-    <meta
-      property="og:description"
-      content="Healthcare analytics, claims reporting, dashboard development, and health informatics."
-    />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://devaharshagubbala07-hub.github.io/" />
-    <link rel="canonical" href="https://devaharshagubbala07-hub.github.io/" />
-    <title>Devaharsha Gubbala | Healthcare Reporting Analyst</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script type="application/ld+json">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Devaharsha Gubbala | Healthcare Reporting Analyst</title>
+  <meta name="description" content="Devaharsha Gubbala's healthcare analytics portfolio: claims reporting at Merative, dashboard validation, and a reproducible Python and SQL demonstration.">
+  <meta name="theme-color" content="#0b2635">
+  <meta property="og:title" content="Devaharsha Gubbala | Healthcare Reporting Analyst">
+  <meta property="og:description" content="Claims reporting, dashboard validation, and a working healthcare analytics demonstration.">
+  <meta property="og:type" content="website"><meta property="og:url" content="https://devaharshagubbala07-hub.github.io/">
+  <link rel="canonical" href="https://devaharshagubbala07-hub.github.io/"><link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Person",
@@ -43,155 +34,37 @@
         ]
       }
     </script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header" data-header><div class="container nav-wrap">
+  <a class="brand" href="#top" aria-label="Devaharsha Gubbala home"><span class="brand-mark" aria-hidden="true">DG</span><span>Devaharsha Gubbala</span></a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" data-nav-toggle><span class="sr-only">Open navigation</span><span></span><span></span><span></span></button>
+  <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation" data-nav><a href="#demo">Analytics demo</a><a href="#work">Work at Merative</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+</div></header>
+<main id="main-content">
+<section id="top" class="hero"><div class="container hero-grid">
+  <div class="hero-copy"><p class="eyebrow">Healthcare reporting analyst · Indianapolis</p><h1>Devaharsha<br>Gubbala.</h1><p class="hero-lede">I work with healthcare claims and benefits data at Merative. I build reports, compare member populations, and check that dashboards use the right definitions.</p><p class="hero-detail">My background is in health informatics, with experience in SQL, Python, R, and business intelligence tools.</p><div class="hero-actions"><a class="button button-primary" href="demo/">Explore the analytics demo <span aria-hidden="true">↗</span></a><a class="text-link light-link" href="#work">Read about my work ↓</a></div></div>
+  <aside class="demo-preview" aria-labelledby="preview-title"><div class="preview-label"><span>From the working demo</span><span class="synthetic-tag">Synthetic data</span></div><h2 id="preview-title">Same measure.<br>Two reporting years.</h2><p>Allowed cost per member per month</p><ul class="mini-bars"><li><span>2024</span><div class="mini-track"><span style="width:85.61%"></span></div><strong>$817.69</strong></li><li><span>2025</span><div class="mini-track"><span style="width:100.00%"></span></div><strong>$955.17</strong></li></ul><div class="preview-stats"><div><strong>300</strong><span>members in 2025</span></div><div><strong>3,399</strong><span>member-months</span></div></div><p class="preview-note">The denominator includes enrollment months with no claims. These are generated example results.</p><a href="demo/" class="text-link">Change the year and plan <span aria-hidden="true">→</span></a></aside>
+</div><div class="container hero-footer"><span>Reporting Analyst at Merative · Since January 2025</span><a href="mailto:devaharshagubbala07@gmail.com">Email me ↗</a><a href="https://github.com/devaharshagubbala07-hub">GitHub ↗</a></div></section>
 
-    <header class="site-header" data-header>
-      <div class="container nav-wrap">
-        <a class="brand" href="#top" aria-label="Devaharsha Gubbala home">
-          <span class="brand-mark" aria-hidden="true">DG</span>
-          <span>Devaharsha Gubbala</span>
-        </a>
+<section id="demo" class="section"><div class="container demo-feature">
+  <div><p class="section-kicker">Working example · Python + SQL</p><h2>Healthcare claims<br>cost explorer</h2><p class="intro-copy">An end-to-end reporting example you can run, inspect, and filter.</p><p>The pipeline starts with enrollment and claim-line CSVs. It quarantines invalid records, calculates cost and membership measures in SQLite, and produces an interactive dashboard.</p><div class="hero-actions"><a class="button button-dark" href="demo/">Open dashboard ↗</a><a class="text-link" href="https://github.com/devaharshagubbala07-hub/healthcare-claims-analytics">Browse the repository ↗</a></div><p class="provenance">New portfolio demonstration developed with AI assistance, using entirely synthetic records. Separate from my professional and academic work.</p></div>
+  <div class="demo-evidence"><div class="evidence-top"><span class="section-kicker">What you can inspect</span><span>01 / Working example</span></div><a href="https://github.com/devaharshagubbala07-hub/healthcare-claims-analytics/blob/main/sql/annual_summary.sql"><span>01</span><div><h3>SQL and metric definitions</h3><p>Member-month denominators, plan filters and observed annual high-cost thresholds.</p></div><b aria-hidden="true">↗</b></a><a href="https://github.com/devaharshagubbala07-hub/healthcare-claims-analytics/blob/main/tests/test_analysis.py"><span>02</span><div><h3>Checks that catch reporting errors</h3><p>Eight hand-calculated tests, plus six pipeline reconciliations.</p></div><b aria-hidden="true">↗</b></a><a href="https://github.com/devaharshagubbala07-hub/healthcare-claims-analytics/blob/main/outputs/findings.md"><span>03</span><div><h3>Findings and limitations</h3><p>Cost trends, concentration, enrollment sensitivity and the questions the data cannot answer.</p></div><b aria-hidden="true">↗</b></a></div>
+</div></section>
 
-        <button
-          class="nav-toggle"
-          type="button"
-          aria-expanded="false"
-          aria-controls="primary-navigation"
-          data-nav-toggle
-        >
-          <span class="sr-only">Open navigation</span>
-          <span></span><span></span><span></span>
-        </button>
+<section id="work" class="section work-section"><div class="container"><div class="section-heading"><p class="section-kicker">Selected work at Merative</p><h2>The details behind the reports.</h2><p>These notes describe my contributions and reporting decisions. Client names, source data, and internal deliverables are kept private.</p></div>
+  <div class="work-list">
+    <details class="work-item"><summary><span class="work-number">01</span><div><span class="work-label">Program reporting</span><h3>Comparing healthcare program cohorts</h3><p>Participant and nonparticipant comparisons across multiple reporting years.</p></div><span class="expand-icon" aria-hidden="true"></span></summary><div class="work-body"><div><h4>What I worked on</h4><p>Prepared financial, utilization, risk, and preventive-care comparisons for a healthcare program refresh. The reporting brief required specific cohort rules, including the exclusion of nonclaimants.</p></div><div><h4>Decisions and checks</h4><p>Aligned population criteria, claimant exclusions, reporting periods, and measure definitions. Checked that the report outputs and presentation used the same populations and labels.</p></div><div><h4>Deliverable</h4><p>Updated reports and presentation comparisons. The results described differences between groups; they did not establish that the program caused those differences.</p></div><p class="work-tools">Health Insights · Cohort definitions · Excel · PowerPoint</p></div></details>
+    <details class="work-item"><summary><span class="work-number">02</span><div><span class="work-label">Cost and utilization</span><h3>Reporting high-cost claimant trends</h3><p>Employer reporting across two incurred years, including annual cost per member.</p></div><span class="expand-icon" aria-hidden="true"></span></summary><div class="work-body"><div><h4>What I worked on</h4><p>Prepared high-cost claimant report suites for defined employer populations and summarized the year-over-year results in executive slides.</p></div><div><h4>Decisions and checks</h4><p>Applied the correct population subset and incurred period to each report. Checked per-member annual cost calculations, numerical precision, and agreement between the workbook and presentation.</p></div><div><h4>Deliverable</h4><p>Report workbooks and a concise presentation of claimant and cost trends, with consistent definitions across the reporting package.</p></div><p class="work-tools">Claims reporting · PMPY · Excel · Executive reporting</p></div></details>
+    <details class="work-item"><summary><span class="work-number">03</span><div><span class="work-label">Dashboard migration</span><h3>Checking definitions during a platform transition</h3><p>Legacy dashboard documentation, recreation, and validation in a newer reporting environment.</p></div><span class="expand-icon" aria-hidden="true"></span></summary><div class="work-body"><div><h4>What I worked on</h4><p>Documented legacy dashboard cards, filters and reference text, and supported dashboard recreation and testing during a reporting-platform migration.</p></div><div><h4>Decisions and checks</h4><p>Investigated calculated percentages, numerator and denominator definitions, and how top-N and physician-type filters changed totals. Treated a missing benchmark separately from a calculation discrepancy.</p></div><div><h4>Deliverable</h4><p>Dashboard documentation, recreated reporting elements, and a record of discrepancies. Open calculations and benchmark gaps were raised for further review.</p></div><p class="work-tools">Cognos · Kyvos · Requirements documentation · Dashboard validation</p></div></details>
+    <details class="work-item"><summary><span class="work-number">04</span><div><span class="work-label">Population health</span><h3>Defining the eligible diabetes population</h3><p>Condition-based reporting with continuous enrollment and measure-specific eligibility.</p></div><span class="expand-icon" aria-hidden="true"></span></summary><div class="work-body"><div><h4>What I worked on</h4><p>Prepared diabetes and impaired-glucose reporting, including condition subgroups and quality measures for eligible member populations.</p></div><div><h4>Decisions and checks</h4><p>Distinguished diabetes types and applied enrollment criteria consistently. Reviewed the populations and measure selection for HbA1c, eye, and neuropathy reporting, and corrected measure selection during quality review.</p></div><div><h4>Deliverable</h4><p>Reviewed cohort and quality-report outputs with the eligibility rules documented so the measures could be interpreted in context.</p></div><p class="work-tools">Cohort definitions · Enrollment criteria · Quality measures · QC</p></div></details>
+  </div>
+</div></section>
 
-        <nav id="primary-navigation" class="primary-nav" aria-label="Primary navigation" data-nav>
-          <a href="#about">About</a>
-          <a href="#experience">Experience</a>
-          <a href="#work">Selected work</a>
-          <a href="#skills">Skills</a>
-          <a class="nav-cta" href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
+<section id="about" class="section"><div class="container about-grid"><div><p class="section-kicker">How I approach the work</p><h2>I spend a lot of time making sure the numbers agree.</h2></div><div class="about-copy"><p>A changed enrollment rule or denominator can change the story a report tells. I work through those details before turning the output into a dashboard, workbook, or presentation.</p><p>My health informatics training helps me connect those reporting choices to healthcare terminology and clinical workflows. I’m interested in analyst roles where I can combine that context with more hands-on SQL, Python, and BI work.</p></div></div></section>
 
-    <main id="main-content">
-      <section id="top" class="hero">
-        <div class="hero-glow hero-glow-one" aria-hidden="true"></div>
-        <div class="hero-glow hero-glow-two" aria-hidden="true"></div>
-        <div class="container hero-grid">
-          <div class="hero-copy reveal">
-            <p class="eyebrow"><span></span> Reporting Analyst · Healthcare Analytics</p>
-            <h1>Turning complex healthcare data into <em>clear decisions.</em></h1>
-            <p class="hero-lede">
-              I’m Devaharsha, a health informatics professional who builds reliable reports,
-              dashboards, and analyses from claims and benefits data—helping teams understand
-              cost, utilization, quality, and population health.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#work">
-                Explore my work
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M5 12h14M13 6l6 6-6 6" />
-                </svg>
-              </a>
-              <a class="button button-secondary" href="mailto:devaharshagubbala07@gmail.com">
-                Email me
-              </a>
-              <a class="button button-secondary" href="https://github.com/devaharshagubbala07-hub">
-                GitHub
-              </a>
-            </div>
-            <div class="hero-meta" aria-label="Location and focus">
-              <span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
-                  <circle cx="12" cy="10" r="2.5" />
-                </svg>
-                Indianapolis, Indiana
-              </span>
-              <span>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M20 7 10 17l-5-5" />
-                </svg>
-                Open to healthcare analytics opportunities
-              </span>
-            </div>
-          </div>
-
-          <div class="hero-visual reveal" aria-label="Healthcare analytics dashboard illustration">
-            <div class="portrait-orbit" aria-hidden="true">
-              <span class="orbit-dot dot-one"></span>
-              <span class="orbit-dot dot-two"></span>
-              <span class="orbit-dot dot-three"></span>
-              <div class="initials-card">
-                <span>DG</span>
-                <small>Health data → insight</small>
-              </div>
-            </div>
-
-            <div class="insight-card insight-card-top" aria-hidden="true">
-              <div class="insight-icon">
-                <svg viewBox="0 0 24 24"><path d="M4 19V9m8 10V5m8 14v-7" /></svg>
-              </div>
-              <div><strong>Utilization</strong><span>Trend analysis</span></div>
-            </div>
-            <div class="insight-card insight-card-bottom" aria-hidden="true">
-              <div class="insight-icon teal">
-                <svg viewBox="0 0 24 24"><path d="M12 21s8-4 8-10V5l-8-3-8 3v6c0 6 8 10 8 10Z" /><path d="m9 11 2 2 4-4" /></svg>
-              </div>
-              <div><strong>Data quality</strong><span>Validated reporting</span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="container capability-strip reveal" aria-label="Core capabilities">
-          <div><strong>Claims analytics</strong><span>Cost, utilization & risk</span></div>
-          <div><strong>BI reporting</strong><span>Dashboards & presentations</span></div>
-          <div><strong>Data quality</strong><span>Validation & issue resolution</span></div>
-          <div><strong>Health informatics</strong><span>FHIR, HL7 & terminology</span></div>
-        </div>
-      </section>
-
-      <section id="about" class="section section-light">
-        <div class="container two-column">
-          <div class="section-heading reveal">
-            <p class="section-kicker">About me</p>
-            <h2>Healthcare context, analytical rigor, and a practical reporting mindset.</h2>
-          </div>
-          <div class="about-copy reveal">
-            <p class="large-copy">
-              My work sits at the intersection of healthcare data, business questions, and
-              decision-ready communication.
-            </p>
-            <p>
-              At Merative, I support reporting and analytics across employer, health plan, and
-              government-focused work. I translate requirements into accurate analyses, reusable
-              dashboards, polished Excel deliverables, and concise presentations.
-            </p>
-            <p>
-              My master’s training in Health Informatics adds a strong foundation in clinical
-              workflows, healthcare standards, population health, and responsible data use. I’m
-              especially interested in making complex findings understandable—and making sure the
-              numbers hold up before they reach a stakeholder.
-            </p>
-            <div class="principles">
-              <div><span>01</span><strong>Ask the right question</strong></div>
-              <div><span>02</span><strong>Validate every assumption</strong></div>
-              <div><span>03</span><strong>Communicate the “so what”</strong></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="experience" class="section section-ink">
-        <div class="container">
-          <div class="section-heading compact reveal">
-            <p class="section-kicker">Experience</p>
-            <h2>From health informatics foundations to enterprise healthcare analytics.</h2>
-          </div>
-
-          <div class="timeline">
+<section id="experience" class="section experience-section"><div class="container"><div class="section-heading"><p class="section-kicker">Experience</p><h2>My path into healthcare analytics.</h2></div><div class="timeline">
             <article class="timeline-item reveal">
               <div class="timeline-date">Jan 2025 — Present</div>
               <div class="timeline-marker" aria-hidden="true"></div>
@@ -272,150 +145,10 @@
         </div>
       </section>
 
-      <section id="work" class="section section-light">
-        <div class="container">
-          <div class="section-heading heading-row reveal">
-            <div><p class="section-kicker">Selected work</p>
-            <h2>Healthcare questions. Careful analysis. Clear reporting.</h2></div>
-            <p>Four case studies from my reporting work at Merative, covering cohort comparisons,
-            cost trends, dashboard validation, and population health.</p>
-          </div>
-          <div class="case-grid"><article class="case-card featured reveal">
-<div class="case-number">01</div>
-<div class="case-label">Claims &amp; benefits analytics</div>
-<h3>Healthcare program cohort analysis</h3><p>Prepared multi-year comparisons of program participants and nonparticipants across healthcare costs, utilization, risk, and preventive-care measures.</p>
-<div class="case-details"><span>Cohort design</span><span>Health Insights</span><span>Excel</span><span>Executive reporting</span></div>
-<details class="case-study"><summary>Read the case study</summary>
-<p><strong>Business question:</strong> How do defined member groups compare across reporting years and measures?</p>
-<p><strong>My contribution:</strong> Applied cohort criteria and claimant exclusions, prepared financial and risk reports, and updated the presentation of comparisons.</p>
-<p><strong>Analytical focus:</strong> Population eligibility, reporting periods, measure definitions, and consistency between reports and slides. These comparisons describe group differences; they do not establish that the program caused those differences.</p></details>
-</article><article class="case-card  reveal">
-<div class="case-number">02</div>
-<div class="case-label">Cost &amp; utilization</div>
-<h3>High-cost claimant &amp; cost trend analysis</h3><p>Prepared high-cost claimant reports for defined employer populations and summarized year-over-year results, including per-member annual cost trends.</p>
-<div class="case-details"><span>Claims reporting</span><span>PMPY trends</span><span>Excel</span><span>PowerPoint</span></div>
-<details class="case-study"><summary>Read the case study</summary>
-<p><strong>Business question:</strong> How do high-cost claimant and cost measures compare across two incurred years?</p>
-<p><strong>My contribution:</strong> Configured population subsets and reporting periods, prepared report suites, and translated the outputs into executive slides.</p>
-<p><strong>Analytical focus:</strong> Correct population selection, comparable periods, per-member annual cost calculations, and consistent labels and numerical precision.</p></details>
-</article><article class="case-card  reveal">
-<div class="case-number">03</div>
-<div class="case-label">Dashboard modernization</div>
-<h3>Healthcare dashboard migration &amp; validation</h3><p>Supported the transition from legacy reporting to a newer analytics platform through dashboard recreation, calculation investigation, and testing.</p>
-<div class="case-details"><span>Cognos</span><span>Kyvos</span><span>Requirements mapping</span><span>Validation</span></div>
-<details class="case-study"><summary>Read the case study</summary>
-<p><strong>Business question:</strong> Does the new dashboard preserve the intended definitions, filters, and behavior of the legacy report?</p>
-<p><strong>My contribution:</strong> Documented existing cards and filters, recreated reporting elements, investigated calculated measures, and discussed discrepancies with colleagues.</p>
-<p><strong>Analytical focus:</strong> Numerator and denominator definitions, filter context, top-N behavior, and benchmark availability. Open issues were tracked for further review.</p></details>
-</article><article class="case-card  reveal">
-<div class="case-number">04</div>
-<div class="case-label">Population health</div>
-<h3>Diabetes population &amp; quality analysis</h3><p>Prepared diabetes cohort and quality reporting using condition definitions, continuous-enrollment criteria, and measure-specific population rules.</p>
-<div class="case-details"><span>Cohort definitions</span><span>HEDIS concepts</span><span>Enrollment criteria</span><span>QC</span></div>
-<details class="case-study"><summary>Read the case study</summary>
-<p><strong>Business question:</strong> What do condition and quality measures show for the eligible diabetes population?</p>
-<p><strong>My contribution:</strong> Defined diabetes and impaired-glucose subsets, applied enrollment criteria, prepared reporting outputs, and corrected measure selection during quality review.</p>
-<p><strong>Analytical focus:</strong> Diabetes type, consistent eligibility definitions, and appropriate populations for HbA1c, eye, and neuropathy measures.</p></details>
-</article></div>
-        </div>
-      </section>
-      <section class="section project-section">
-        <div class="container">
-          <div class="section-heading compact reveal">
-            <p class="section-kicker">Academic projects</p>
-            <h2>Data preparation and statistical analysis.</h2>
-          </div>
-          <div class="project-grid">
-            <article class="project-card reveal">
-              <div class="project-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 17h16M8 3v8M16 13v8" /></svg></div>
-              <p class="project-type">Academic project summary · Interoperability</p>
-              <h3>FHIR ETL &amp; Referral Management</h3>
-              <p>Developed a Python pipeline to extract, transform, and load FHIR resources,
-              apply terminology mappings, and handle data errors. Modeled referral workflows
-              to connect the technical work to clinical processes.</p>
-              <ul class="tech-list"><li>Python</li><li>FHIR APIs</li><li>OAuth 2.0</li><li>SNOMED CT</li></ul>
-            </article>
-            <article class="project-card reveal">
-              <div class="project-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 16c2-1 3-4 5-4s3 3 5 3 3-6 6-7" /><path d="M4 20h16M4 4v16" /></svg></div>
-              <p class="project-type">Academic project summary · Statistics</p>
-              <h3>Sleep &amp; Physical Activity Analytics</h3>
-              <p>Used correlation, ANOVA, regression, and visualization to study relationships
-              between activity, stress, sleep quality, and BMI categories.</p>
-              <ul class="tech-list"><li>R</li><li>ggplot2</li><li>ANOVA</li><li>Regression</li></ul>
-            </article>
-          </div>
-        </div>
-      </section>
+<section id="academic" class="section"><div class="container"><div class="section-heading"><p class="section-kicker">Graduate coursework</p><h2>Earlier projects</h2><p>Summaries from my health informatics studies. Original project code and notebooks are not yet included here.</p></div><div class="academic-grid"><article><span class="work-label">Interoperability</span><h3>FHIR ETL &amp; Referral Management</h3><p>Developed a Python pipeline to extract and transform FHIR resources, apply terminology mappings, and handle data errors. Modeled referral workflows to connect the technical work to clinical processes.</p><p class="work-tools">Python · FHIR APIs · OAuth 2.0 · SNOMED CT · BPMN</p></article><article><span class="work-label">Statistical analysis</span><h3>Sleep &amp; Physical Activity</h3><p>Used correlation, ANOVA, regression, and visualization to examine relationships between activity, stress, sleep quality, and BMI categories.</p><p class="work-tools">R · ggplot2 · ANOVA · Regression</p></article></div></div></section>
 
-      <section id="skills" class="section section-light">
-        <div class="container skill-layout">
-          <div class="section-heading reveal">
-            <p class="section-kicker">Toolkit</p>
-            <h2>Skills grounded in the full reporting lifecycle.</h2>
-            <p>
-              From defining the population to checking the final slide, I work across analysis,
-              validation, visualization, and communication.
-            </p>
-          </div>
+<section id="skills" class="section skills-section"><div class="container skills-grid"><div><p class="section-kicker">Tools and background</p><h2>Where I’ve used them.</h2></div><div class="skill-rows"><div><h3>Professional reporting</h3><p>Health Insights · Insights Edge · Cognos · Kyvos · Excel · PowerPoint</p><p>Cohort definitions, claims reporting, dashboard validation, and quality review.</p></div><div><h3>Academic and earlier analytics work</h3><p>SQL · Python · R · Power BI · Tableau</p><p>Data preparation, statistical analysis, visualization, and FHIR workflows.</p></div><div><h3>Education</h3><p>Master of Science in Health Informatics<br>Indiana University–Purdue University Indianapolis · May 2025</p></div></div></div></section>
 
-          <div class="skill-groups">
-            <article class="skill-group reveal">
-              <span class="skill-index">01</span>
-              <div><h3>Healthcare analytics</h3><p>Claims data · Cost and utilization · Population health · Cohort analysis · Risk and quality measures · HEDIS concepts</p></div>
-            </article>
-            <article class="skill-group reveal">
-              <span class="skill-index">02</span>
-              <div><h3>Reporting & visualization</h3><p>Advanced Excel · Power BI · Tableau · Dashboard design · Executive summaries · PowerPoint · Quality assurance</p></div>
-            </article>
-            <article class="skill-group reveal">
-              <span class="skill-index">03</span>
-              <div><h3>Data & statistics</h3><p>SQL · Python · R · SAS · Data cleaning · Regression · ANOVA · Predictive modeling · ETL workflows</p></div>
-            </article>
-            <article class="skill-group reveal">
-              <span class="skill-index">04</span>
-              <div><h3>Health informatics</h3><p>HL7 FHIR · HL7 v2 · ICD-10 · CPT/HCPCS · SNOMED CT · LOINC · REST APIs · HIPAA-aware data practices</p></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="education-section">
-        <div class="container education-card reveal">
-          <div>
-            <p class="section-kicker">Education</p>
-            <h2>Master of Science in Health Informatics</h2>
-            <p>Indiana University–Purdue University Indianapolis · May 2025</p>
-          </div>
-          <div class="education-seal" aria-hidden="true">MS<br /><span>HI</span></div>
-        </div>
-      </section>
-
-      <section id="contact" class="section contact-section">
-        <div class="container contact-card reveal">
-          <div>
-            <p class="section-kicker">Let’s connect</p>
-            <h2>Interested in making healthcare data more useful?</h2>
-            <p>
-              I’m always glad to connect with people working in healthcare analytics,
-              informatics, reporting, and data-driven improvement.
-            </p>
-          </div>
-          <a class="button button-light" href="mailto:devaharshagubbala07@gmail.com">
-            devaharshagubbala07@gmail.com
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
-          </a>
-        </div>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="container footer-wrap">
-        <a class="brand" href="#top"><span class="brand-mark">DG</span><span>Devaharsha Gubbala</span></a>
-        <p>Healthcare analytics · Indianapolis, Indiana</p>
-        <p>© <span data-year>2026</span> Devaharsha Gubbala</p>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
-</html>
+<section id="contact" class="section contact-section"><div class="container contact-grid"><div><p class="section-kicker">Contact</p><h2>Let’s connect.</h2><p>For healthcare, reporting, and BI analyst opportunities, email me.</p></div><div class="contact-links"><a href="mailto:devaharshagubbala07@gmail.com">devaharshagubbala07@gmail.com ↗</a><a href="https://github.com/devaharshagubbala07-hub">GitHub profile ↗</a></div></div></section>
+</main><footer class="site-footer"><div class="container"><span>© <span data-year>2026</span> Devaharsha Gubbala</span><span>Indianapolis, Indiana</span><a href="#top">Back to top ↑</a></div></footer><script src="script.js"></script>
+</body></html>
