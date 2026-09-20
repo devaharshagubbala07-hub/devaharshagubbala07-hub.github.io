@@ -25,6 +25,7 @@ This repository contains the portfolio website and a published copy of the demon
 The site uses an analyst’s desk theme: deep navy, white paper, restrained blue accents, editorial type, numbered case notes, and chart details. No third-party fonts, animation libraries, trackers, or build dependencies are required.
 
 - The opening chart switches between two reporting years using the same pipeline results as the claims demonstration.
+- The Analysis Lab includes a selectable SQL excerpt from the demonstration's `sql/schema.sql`, with a plain-language explanation, source link, and static grid backdrop. It shares the site's brief reveal animation and motion preferences.
 - The reporting-method notebook shows how questions, population definitions, validation, and interpretation fit together.
 - Brief entrance, chart, and scroll animations respect `prefers-reduced-motion`. A motion switch also saves a visitor’s preference locally.
 - Navigation, case notes, and the static chart remain readable without JavaScript. Interactive controls use native buttons and visible keyboard focus.
