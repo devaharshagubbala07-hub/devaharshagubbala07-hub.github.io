@@ -32,6 +32,10 @@ The site uses an analyst’s desk theme: forest green, warm paper, editorial typ
 
 The `demo/dashboard.css` file is also maintained in the analysis repository at `dashboard/dashboard.css` so a freshly generated demo retains the same appearance.
 
+## Background artwork
+
+The opening section uses a custom generated analyst-workspace image, with a dark overlay for readable text and a smaller image for narrow screens. Case notes keep their clean paper background. The photograph is illustrative, and its decorative charts are unrelated to the working demo's data. [Asset files and generation prompt](assets/README.md).
+
 ## View locally
 
 Keep `index.html`, `styles.css`, and `script.js` together, then open `index.html` in a browser. There are no dependencies or build steps. Core content and case studies remain available without JavaScript.

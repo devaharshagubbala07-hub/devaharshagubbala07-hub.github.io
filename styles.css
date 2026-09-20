@@ -42,3 +42,16 @@ html[data-motion="off"]{scroll-behavior:auto}html[data-motion="off"] *,html[data
 /* SVG labels scale with the plot; enlarge them at phone widths. */
 .chart-axis,.bar-value,.bar-year{font-size:11px}
 @media(max-width:700px){.chart-axis,.bar-value,.bar-year{font-size:16px}}
+
+/* Illustrative analyst workspace. Text and working chart stay separate. */
+.hero-photograph{position:absolute;inset:0;display:block;overflow:hidden;pointer-events:none;z-index:0}
+.hero-photograph img{display:block;width:100%;height:100%;object-fit:cover;object-position:54% 50%}
+.hero-photograph::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(13,40,33,.89) 0%,rgba(15,44,36,.80) 35%,rgba(15,44,36,.50) 67%,rgba(13,36,30,.63) 100%),linear-gradient(0deg,#153b32 0%,rgba(21,59,50,.08) 34%,rgba(12,34,28,.25) 100%)}
+.hero .hero-grid-background{z-index:1;opacity:.25}
+.hero>.container{z-index:2}
+.hero .analyst-desk{background:rgba(10,33,27,.88);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border-color:rgba(164,189,139,.46);box-shadow:13px 13px 0 rgba(8,26,21,.14)}
+.hero .hero-lede{color:#d2dacd}
+.hero .hero-topline{color:#c8d5c2}
+.hero .hero-specialties{color:#c3d0bc}
+@media(max-width:700px){.hero-photograph{height:750px}.hero-photograph img{object-position:60% 50%}.hero-photograph::after{background:linear-gradient(90deg,rgba(13,39,32,.82),rgba(15,44,36,.69)),linear-gradient(0deg,#153b32 0%,rgba(21,59,50,.45) 27%,rgba(13,39,32,.08) 75%)}.hero .analyst-desk{background:#102f28;backdrop-filter:none;-webkit-backdrop-filter:none}}
+@media print{.hero-photograph{display:none}}
