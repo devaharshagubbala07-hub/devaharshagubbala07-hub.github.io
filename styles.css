@@ -74,3 +74,10 @@ html[data-motion="off"]{scroll-behavior:auto}html[data-motion="off"] *,html[data
 @media(max-width:1000px){.lab-project{padding:24px}.lab-project-top{align-items:flex-start;flex-direction:column;gap:9px}.project-pair-heading{gap:35px}}
 @media(max-width:700px){.more-projects{margin-top:45px;padding-top:32px}.project-pair-heading{grid-template-columns:1fr;gap:20px}.project-pair-heading h3{font-size:1.8rem}.project-pair-heading>p{max-width:500px}.project-pair{grid-template-columns:1fr;gap:22px}.lab-project h4{font-size:1.85rem}.lab-project-top{flex-direction:row;align-items:center}.project-stats{grid-template-columns:1.25fr 1fr;gap:14px}.project-stats dt{font-size:.61rem}}
 @media(max-width:380px){.lab-project{padding:21px}.lab-project-top{flex-wrap:wrap}.lab-project h4{font-size:1.65rem}.project-actions{gap:18px}}
+
+/* Short findings keep the analytical judgment beside each project. */
+.project-takeaway{margin:0 0 27px;padding:18px 20px;background:#f0f5fb;border-left:2px solid #477dbc;display:grid;gap:13px}
+.project-takeaway div{min-width:0}.project-takeaway dt{font-family:var(--mono);font-size:.6rem;letter-spacing:.035em;text-transform:uppercase;color:#335d91;margin-bottom:3px}
+.project-takeaway dd{margin:0;font-size:.79rem;line-height:1.65;color:var(--ink)}.project-takeaway strong{font-weight:600;color:var(--navy)}
+.lab-copy .project-takeaway{margin-top:25px;max-width:540px}.lab-project .project-takeaway{flex:1}
+@media(max-width:700px){.project-takeaway{padding:17px 18px;gap:14px}.project-takeaway dd{font-size:.82rem}.project-actions a{min-height:36px}}

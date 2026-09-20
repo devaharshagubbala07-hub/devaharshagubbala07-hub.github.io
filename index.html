@@ -14,7 +14,7 @@
   <meta property="og:image:alt" content="Illustrative analyst workspace with charts and a notebook.">
   <link rel="canonical" href="https://devaharshagubbala07-hub.github.io/">
   <link rel="icon" href="favicon.svg?v=navy-1" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=current-projects-1">
+  <link rel="stylesheet" href="styles.css?v=takeaways-powerbi-1">
   <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -121,7 +121,7 @@
   <div class="container">
     <div class="section-meta" data-reveal><span class="section-index">02 — Analysis lab</span><span class="mono">Python + SQL + a question worth asking</span></div>
     <div class="lab-grid">
-      <div class="lab-copy" data-reveal><span class="project-badge">Working portfolio demonstration</span><h2>Follow the cost.<br><em>Check the context.</em></h2><p class="intro-copy">A healthcare claims explorer you can filter, inspect, and run yourself.</p><p>Start with enrollment and claim-line records. Quarantine invalid rows, calculate the measures in SQL, and explore what changes by year and plan.</p><div class="hero-actions"><a class="button button-dark" href="demo/">Open the dashboard <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/devaharshagubbala07-hub/healthcare-claims-analytics">Read the code <span aria-hidden="true">↗</span></a></div><p class="provenance">Built for this portfolio with AI assistance and entirely synthetic data: fictional records, not client results. Separate from my professional and academic work.</p></div>
+      <div class="lab-copy" data-reveal><span class="project-badge">Working portfolio demonstration</span><h2>Follow the cost.<br><em>Check the context.</em></h2><p class="intro-copy">A healthcare claims explorer you can filter, inspect, and run yourself.</p><p>Start with enrollment and claim-line records. Quarantine invalid rows, calculate the measures in SQL, and explore what changes by year and plan.</p><dl class="project-takeaway"><div><dt>Finding</dt><dd>In the synthetic 2025 data, 11 high-cost members account for <strong>33.8% of allowed cost</strong>.</dd></div><div><dt>What it means</dt><dd>A small group can account for a substantial share of spending.</dd></div><div><dt>Next step</dt><dd>Check whether that concentration persists across plans and different cost thresholds.</dd></div></dl><div class="hero-actions"><a class="button button-dark" href="demo/">Open the dashboard <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/devaharshagubbala07-hub/healthcare-claims-analytics">Read the code <span aria-hidden="true">↗</span></a></div><p class="provenance">Built for this portfolio with AI assistance and entirely synthetic data: fictional records, not client results. Separate from my professional and academic work.</p></div>
       <div class="lab-visual" data-reveal>
         <div class="lab-visual-header"><span class="mono">Cost composition</span><span class="data-badge">2025 / All plans</span></div>
         <div class="composition-total"><span>Total allowed cost</span><strong>$3,246,619.66</strong><span class="mono">Synthetic demonstration</span></div>
@@ -163,7 +163,8 @@
           <p>Investigate spending concentration and GLP-1/GIP trends. Separate changes in prescription volume from changes in average spending per fill.</p>
           <dl class="project-stats"><div><dt>Listed drug products</dt><dd>3,625</dd></div><div><dt>CMS release</dt><dd>2026</dd></div></dl>
           <p class="project-detail">2020–2024 observations · Gross spending before rebates · Python + SQL</p>
-          <div class="project-actions"><a class="button button-dark" href="projects/prescription-spending/">Explore drug spending <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/devaharshagubbala07-hub/prescription-spending-analysis">View the code <span aria-hidden="true">↗</span></a></div>
+          <dl class="project-takeaway"><div><dt>Finding</dt><dd>In 2024, Ozempic accounts for <strong>47.1% of spending</strong> within the selected GLP-1 / GIP group.</dd></div><div><dt>What it means</dt><dd>Start a budget review with the largest contributors and their prescription volumes.</dd></div><div><dt>Next step</dt><dd>Use the growth breakdown, then examine days supplied and rebates with additional data.</dd></div></dl>
+          <div class="project-actions"><a class="button button-dark" href="projects/prescription-spending/">Explore drug spending <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/devaharshagubbala07-hub/prescription-spending-analysis">View the code <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/devaharshagubbala07-hub/prescription-spending-analysis/tree/main/powerbi">Power BI project <span aria-hidden="true">↗</span></a></div>
         </article>
         <article class="lab-project" data-reveal>
           <div class="lab-project-top"><span class="mono">03 / AI business value</span><span class="project-badge">Scenario analysis</span></div>
@@ -171,6 +172,7 @@
           <p>Account for retries, human review, rework, and fixed fees. Test quality thresholds and the assumptions that turn freed time into economic value.</p>
           <dl class="project-stats"><div><dt>Synthetic business tasks</dt><dd>3,510</dd></div><div><dt>Departments</dt><dd>3</dd></div></dl>
           <p class="project-detail">Adjustable assumptions · Cost per usable task · Python + SQL</p>
+          <dl class="project-takeaway"><div><dt>Finding</dt><dd><strong>75.1% of the synthetic tasks</strong> were accepted without rework.</dd></div><div><dt>What it means</dt><dd>The example falls short of the dashboard’s default 80% first-pass quality target.</dd></div><div><dt>Next step</dt><dd>Measure quality and human review time on actual task logs before estimating business value.</dd></div></dl>
           <div class="project-actions"><a class="button button-dark" href="projects/ai-value/">Explore AI economics <span aria-hidden="true">↗</span></a><a class="text-link" href="https://github.com/devaharshagubbala07-hub/ai-spend-value-monitor">View the code <span aria-hidden="true">↗</span></a></div>
         </article>
       </div>
