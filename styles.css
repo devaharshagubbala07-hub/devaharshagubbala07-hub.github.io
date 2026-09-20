@@ -38,3 +38,7 @@ html[data-motion="off"]{scroll-behavior:auto}html[data-motion="off"] *,html[data
 .method-panel>p:not(.notebook-label),.academic-copy>p{font-size:.86rem}
 .fhir-visual span{font-size:.625rem}
 @media(max-width:380px){.desk-readout{flex-wrap:wrap}.desk-controls>.mono{max-width:130px}.desk-top{flex-wrap:wrap}.fhir-visual span{font-size:.6rem}}
+
+/* SVG labels scale with the plot; enlarge them at phone widths. */
+.chart-axis,.bar-value,.bar-year{font-size:11px}
+@media(max-width:700px){.chart-axis,.bar-value,.bar-year{font-size:16px}}
