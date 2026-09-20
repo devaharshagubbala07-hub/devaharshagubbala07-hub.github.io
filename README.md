@@ -22,7 +22,7 @@ This repository contains the portfolio website and a published copy of the demon
 
 ## Design and interaction
 
-The site uses an analyst’s desk theme: forest green, warm paper, editorial type, numbered case notes, and chart details. No third-party fonts, animation libraries, trackers, or build dependencies are required.
+The site uses an analyst’s desk theme: deep navy, white paper, restrained blue accents, editorial type, numbered case notes, and chart details. No third-party fonts, animation libraries, trackers, or build dependencies are required.
 
 - The opening chart switches between two reporting years using the same pipeline results as the claims demonstration.
 - The reporting-method notebook shows how questions, population definitions, validation, and interpretation fit together.
@@ -34,7 +34,7 @@ The `demo/dashboard.css` file is also maintained in the analysis repository at `
 
 ## Background artwork
 
-The opening section uses a custom generated analyst-workspace image, with a dark overlay for readable text and a smaller image for narrow screens. Case notes keep their clean paper background. The photograph is illustrative, and its decorative charts are unrelated to the working demo's data. [Asset files and generation prompt](assets/README.md).
+The opening section uses a custom generated analyst-workspace image, with CSS desaturation and a navy overlay for readable text and a smaller image for narrow screens. Case notes keep their clean light background. The photograph is illustrative, and its decorative charts are unrelated to the working demo's data. [Asset files and generation prompt](assets/README.md).
 
 ## View locally
 

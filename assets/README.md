@@ -7,7 +7,7 @@ Published assets:
 - `assets/analyst-workspace.webp` — full-width image, encoded for the web.
 - `assets/analyst-workspace-small.webp` — a smaller version for narrow screens.
 
-The image is decorative (`alt=""`), with contrast supplied by a separate CSS overlay. Essential text and live chart values remain HTML and SVG. WebP encoding and the small-image resize are delivery optimizations; the composition is the generated original.
+The image is decorative (`alt=""`), with CSS desaturation and a separate navy overlay to match the site palette and support text contrast. The underlying image retains its original colors. Essential text and live chart values remain HTML and SVG. WebP encoding and the small-image resize are delivery optimizations; the composition is the generated original.
 
 ## Generation prompt
 
