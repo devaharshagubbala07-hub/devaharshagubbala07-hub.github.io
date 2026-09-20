@@ -49,6 +49,7 @@
     document.body.classList.toggle("nav-open", open);
     navLabel.textContent = open ? "Close" : "Menu";
   });
+  document.querySelector(".brand").addEventListener("click", closeNav);
   nav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeNav));
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && navToggle.getAttribute("aria-expanded") === "true") {
@@ -129,7 +130,7 @@
       });
     }, { threshold: 0.07, rootMargin: "0px 0px -20px 0px" });
     document.querySelectorAll("[data-reveal]").forEach(element => {
-      // Never hide content already on screen or targeted by an anchor.
+      // Only animate off-screen content; no content is hidden while awaiting observation.
       if (element.getBoundingClientRect().top > window.innerHeight && !element.contains(document.querySelector(":target"))) {
         element.classList.add("will-reveal");
         observer.observe(element);
