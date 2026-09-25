@@ -5,3 +5,5 @@
 @media print{.topbar,.section-nav,.hero-links,.filters,.top-links{display:none}.hero{display:block}body{background:white}.case-section{break-inside:avoid}.wrap{width:100%}.hero-note{box-shadow:none}.panel{break-inside:avoid}}
 
 .hero-note .big-number{overflow-wrap:normal}.hero-note .mini-counts{clear:both}
+
+.mobile-table-note{display:none}@media(max-width:650px){.mobile-table-note{display:block;font-size:.73rem;color:var(--muted);margin:0 0 10px}}

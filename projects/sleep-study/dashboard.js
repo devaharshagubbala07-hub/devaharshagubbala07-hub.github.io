@@ -11,17 +11,24 @@
     if (text !== undefined) el.textContent = text;
     return el;
   };
-  const x = v => 60 + (v - 20) / 80 * 630;
-  const y = v => 295 - (v - 1) / 9 * 255;
+  let lastWidth = 0;
   function render(g) {
+    // Size the drawing coordinate system to the actual panel. Keeping 720 units
+    // on a phone shrinks 14px axis labels to about 6px; this preserves legibility.
+    const width = Math.max(280, Math.min(720, Math.round(chart.getBoundingClientRect().width)));
+    lastWidth = width;
+    const left = 40, right = width - 16;
+    const x = v => left + (v - 20) / 80 * (right - left);
+    const y = v => 295 - (v - 1) / 9 * 250;
+    chart.setAttribute('viewBox', `0 0 ${width} 360`);
     const layer = document.createDocumentFragment();
     for (let i = 1; i <= 10; i++) {
-      layer.append(elem('line', {x1:60, y1:y(i), x2:690, y2:y(i), class:'grid'}));
-      layer.append(elem('text', {x:44,y:y(i)+5,'text-anchor':'end','font-size':14}, i));
+      layer.append(elem('line', {x1:left, y1:y(i), x2:right, y2:y(i), class:'grid'}));
+      layer.append(elem('text', {x:left-12,y:y(i)+5,'text-anchor':'end','font-size':14}, i));
     }
     for (let i = 20; i <= 100; i += 20) layer.append(elem('text', {x:x(i),y:319,'text-anchor':'middle','font-size':14},i));
-    layer.append(elem('text', {x:375,y:346,'text-anchor':'middle','font-size':14},'Physical activity level (dataset units)'));
-    layer.append(elem('text', {x:60,y:20,'font-size':14},'Sleep quality · 1–10 score'));
+    layer.append(elem('text', {x:(left+right)/2,y:346,'text-anchor':'middle','font-size':13},'Physical activity (dataset units)'));
+    layer.append(elem('text', {x:left,y:20,'font-size':14},'Sleep quality · 1–10 score'));
     for (const p of g.points) {
       const dot = elem('circle', {cx:x(p.activity),cy:y(p.sleep),r:Math.sqrt(p.count)*2.1+2});
       dot.append(elem('title',{},`${p.count} record${p.count===1?'':'s'}: activity ${p.activity}, sleep score ${p.sleep}`));
@@ -41,6 +48,10 @@
   fetch('outputs/summary.json').then(r => {if(!r.ok) throw new Error('Data unavailable');return r.json();}).then(data => {
     select.disabled = false;
     select.addEventListener('change', () => render(data.groups[select.value]));
+    window.addEventListener('resize', () => {
+      const width=Math.max(280,Math.min(720,Math.round(chart.getBoundingClientRect().width)));
+      if(width!==lastWidth) render(data.groups[select.value]);
+    });
     render(data.groups.all);
   }).catch(() => {document.querySelector('#load-note').textContent='The interactive data could not load. The default chart, findings and downloadable results remain available.';});
 })();
