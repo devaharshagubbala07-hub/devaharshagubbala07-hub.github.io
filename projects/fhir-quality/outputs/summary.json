@@ -1,0 +1,357 @@
+{
+  "provenance": "New 2026 portfolio extension with intentionally flawed, wholly fictional records",
+  "reference_date": "2026-01-31",
+  "totals": {
+    "input_entries": 33,
+    "loaded": 23,
+    "quarantined": 10,
+    "warning_entries": 1
+  },
+  "by_type": [
+    {
+      "type": "Condition",
+      "input": 5,
+      "loaded": 4,
+      "quarantined": 1
+    },
+    {
+      "type": "Observation",
+      "input": 17,
+      "loaded": 11,
+      "quarantined": 6
+    },
+    {
+      "type": "Patient",
+      "input": 9,
+      "loaded": 8,
+      "quarantined": 1
+    },
+    {
+      "type": "Procedure",
+      "input": 1,
+      "loaded": 0,
+      "quarantined": 1
+    },
+    {
+      "type": "Unknown",
+      "input": 1,
+      "loaded": 0,
+      "quarantined": 1
+    }
+  ],
+  "coverage": {
+    "patients": 8,
+    "with_final_observation": 6,
+    "without_final_observation": 2,
+    "final_observation_rows": 10
+  },
+  "issue_counts": {
+    "ambiguous_full_url": 2,
+    "duplicate_identity": 2,
+    "invalid_effective_timestamp": 1,
+    "invalid_gender_code": 1,
+    "invalid_or_missing_id": 1,
+    "missing_resource": 1,
+    "outside_demo_scope": 1,
+    "unexpected_unit": 1,
+    "unresolved_patient_reference": 3
+  },
+  "checks": {
+    "input_equals_loaded_plus_quarantined": true,
+    "type_totals_reconcile": true,
+    "patient_denominator_reconciles": true,
+    "foreign_keys_valid": true,
+    "no_missing_birth_date_imputed": true
+  },
+  "ledger": [
+    {
+      "entry": 1,
+      "type": "Patient",
+      "key": "Patient/p01",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 2,
+      "type": "Patient",
+      "key": "Patient/p02",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 3,
+      "type": "Patient",
+      "key": "Patient/p03",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 4,
+      "type": "Patient",
+      "key": "Patient/p04",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 5,
+      "type": "Patient",
+      "key": "Patient/p05",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 6,
+      "type": "Patient",
+      "key": "Patient/p06",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 7,
+      "type": "Patient",
+      "key": "Patient/p07",
+      "status": "Loaded with warning",
+      "errors": [],
+      "warnings": [
+        "missing_birth_date"
+      ]
+    },
+    {
+      "entry": 8,
+      "type": "Patient",
+      "key": "Patient/p08",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 9,
+      "type": "Patient",
+      "key": "Patient/p-bad",
+      "status": "Quarantined",
+      "errors": [
+        "invalid_gender_code"
+      ],
+      "warnings": []
+    },
+    {
+      "entry": 10,
+      "type": "Observation",
+      "key": "Observation/o001",
+      "status": "Quarantined",
+      "errors": [
+        "duplicate_identity",
+        "ambiguous_full_url"
+      ],
+      "warnings": []
+    },
+    {
+      "entry": 11,
+      "type": "Observation",
+      "key": "Observation/o002",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 12,
+      "type": "Observation",
+      "key": "Observation/o003",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 13,
+      "type": "Observation",
+      "key": "Observation/o004",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 14,
+      "type": "Observation",
+      "key": "Observation/o005",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 15,
+      "type": "Observation",
+      "key": "Observation/o006",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 16,
+      "type": "Observation",
+      "key": "Observation/o007",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 17,
+      "type": "Observation",
+      "key": "Observation/o008",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 18,
+      "type": "Observation",
+      "key": "Observation/o009",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 19,
+      "type": "Observation",
+      "key": "Observation/o010",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 20,
+      "type": "Observation",
+      "key": "Observation/o011",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 21,
+      "type": "Observation",
+      "key": "Observation/o012",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 22,
+      "type": "Observation",
+      "key": "Observation/o-orphan",
+      "status": "Quarantined",
+      "errors": [
+        "unresolved_patient_reference"
+      ],
+      "warnings": []
+    },
+    {
+      "entry": 23,
+      "type": "Observation",
+      "key": "Observation/o-unit",
+      "status": "Quarantined",
+      "errors": [
+        "unexpected_unit"
+      ],
+      "warnings": []
+    },
+    {
+      "entry": 24,
+      "type": "Observation",
+      "key": "Observation/o-date",
+      "status": "Quarantined",
+      "errors": [
+        "invalid_effective_timestamp"
+      ],
+      "warnings": []
+    },
+    {
+      "entry": 25,
+      "type": "Observation",
+      "key": "Observation/o-foreign",
+      "status": "Quarantined",
+      "errors": [
+        "unresolved_patient_reference"
+      ],
+      "warnings": []
+    },
+    {
+      "entry": 26,
+      "type": "Observation",
+      "key": "Observation/o001",
+      "status": "Quarantined",
+      "errors": [
+        "duplicate_identity",
+        "ambiguous_full_url"
+      ],
+      "warnings": []
+    },
+    {
+      "entry": 27,
+      "type": "Condition",
+      "key": "Condition/c001",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 28,
+      "type": "Condition",
+      "key": "Condition/c002",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 29,
+      "type": "Condition",
+      "key": "Condition/c003",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 30,
+      "type": "Condition",
+      "key": "Condition/c004",
+      "status": "Loaded",
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "entry": 31,
+      "type": "Condition",
+      "key": "Condition/c005",
+      "status": "Quarantined",
+      "errors": [
+        "unresolved_patient_reference"
+      ],
+      "warnings": []
+    },
+    {
+      "entry": 32,
+      "type": "Procedure",
+      "key": "Procedure/outside-scope",
+      "status": "Quarantined",
+      "errors": [
+        "outside_demo_scope"
+      ],
+      "warnings": []
+    },
+    {
+      "entry": 33,
+      "type": "Unknown",
+      "key": "Unknown/",
+      "status": "Quarantined",
+      "errors": [
+        "missing_resource",
+        "invalid_or_missing_id"
+      ],
+      "warnings": []
+    }
+  ]
+}

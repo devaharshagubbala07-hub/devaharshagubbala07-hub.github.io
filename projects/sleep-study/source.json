@@ -1,0 +1,18 @@
+{
+  "dataset": "Sleep Health and Lifestyle Dataset",
+  "publisher": "uom190346a on Kaggle",
+  "landing_page": "https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset",
+  "download_url": "https://www.kaggle.com/api/v1/datasets/download/uom190346a/sleep-health-and-lifestyle-dataset?datasetVersionNumber=2",
+  "version": 2,
+  "retrieved_utc": "2026-09-25",
+  "license": "CC0: Public Domain (publisher listing)",
+  "nature": "Publisher-created synthetic data for illustrative purposes",
+  "upstream_filename": "Sleep_health_and_lifestyle_dataset.csv",
+  "local_filename": "data/sleep-health-v2.csv",
+  "csv_bytes": 24137,
+  "csv_sha256": "1efe7b6f781ff88078d08d81fe136cff98b1b0c32560f35f8650ca5984b77841",
+  "zip_sha256": "930cdb79ecf9c2d46bd2a5c5af172505fc305e775b52818bdeef062345d01e1c",
+  "records": 374,
+  "source_unchanged": true,
+  "collection_method": "Not verified as real human data; no self-report or wearable collection claim is made"
+}

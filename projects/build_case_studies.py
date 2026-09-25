@@ -1,0 +1,119 @@
+"""Build the two static-first academic case studies from their analysis outputs.
+
+Run the analyses first, then: python projects/build_case_studies.py
+Interactive scripts enhance complete default charts/tables, not empty containers.
+"""
+from html import escape
+import json
+from pathlib import Path
+
+ROOT=Path(__file__).resolve().parent
+GITHUB="https://github.com/devaharshagubbala07-hub/devaharshagubbala07-hub.github.io/tree/main/projects/"
+SITE="https://devaharshagubbala07-hub.github.io/projects/"
+
+
+def shell(slug,title,description,body):
+    return f'''<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{escape(title)} | Devaharsha Gubbala</title><meta name="description" content="{escape(description)}">
+<meta name="theme-color" content="#142a43"><link rel="canonical" href="{SITE}{slug}/">
+<meta property="og:type" content="website"><meta property="og:title" content="{escape(title)} | Devaharsha Gubbala">
+<meta property="og:description" content="{escape(description)}"><meta property="og:url" content="{SITE}{slug}/">
+<link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+<script>try{{if(localStorage.getItem('dg-portfolio-motion')==='off')document.documentElement.dataset.motion='off';}}catch(e){{}}</script>
+<link rel="stylesheet" href="../case-study.css?v=academic-20260925"></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="topbar"><div class="wrap"><a class="brand" href="../../"><span aria-hidden="true">DG</span>Devaharsha Gubbala</a><nav class="top-links" aria-label="Case study navigation"><a href="../../#academic">Portfolio</a><a class="extra" href="{GITHUB}{slug}">Code &amp; notes ↗</a></nav></div></header>
+<main id="main" class="wrap">{body}</main>
+<footer class="footer wrap"><p>Devaharsha Gubbala · Healthcare context. Careful analysis.</p><a href="../../#academic">← Back to the portfolio</a></footer>
+<script src="dashboard.js?v=academic-20260925" defer></script></body></html>'''
+
+
+def heading(number,title,description=""):
+    return f'<div class="section-heading"><div><p class="eyebrow">{number}</p><h2>{title}</h2></div><p>{description}</p></div>'
+
+
+def kpi(label,value,note):
+    return f'<div class="kpi"><span class="kicker">{label}</span><strong>{value}</strong><p>{note}</p></div>'
+
+
+def scatter(g):
+    x=lambda v:60+(v-20)/80*630
+    y=lambda v:295-(v-1)/9*255
+    bits=[]
+    for i in range(1,11):
+        bits.append(f'<line x1="60" y1="{y(i)}" x2="690" y2="{y(i)}" class="grid"/><text x="44" y="{y(i)+5}" text-anchor="end" font-size="14">{i}</text>')
+    for i in range(20,101,20):bits.append(f'<text x="{x(i)}" y="319" text-anchor="middle" font-size="14">{i}</text>')
+    bits.append('<text x="375" y="346" text-anchor="middle" font-size="14">Physical activity level (dataset units)</text><text x="60" y="20" font-size="14">Sleep quality · 1–10 score</text>')
+    for p in g["points"]:
+        bits.append(f'<circle cx="{x(p["activity"])}" cy="{y(p["sleep"])}" r="{p["count"]**.5*2.1+2}"><title>{p["count"]} records: activity {p["activity"]:g}, sleep {p["sleep"]:g}</title></circle>')
+    lo,hi=g['activity_min'],g['activity_max']
+    bits.append(f'<line x1="{x(lo)}" y1="{y(g["intercept"]+g["slope"]*lo)}" x2="{x(hi)}" y2="{y(g["intercept"]+g["slope"]*hi)}" class="fit"/>')
+    return f'<svg id="scatter" class="chart-svg" viewBox="0 0 720 360" role="img" aria-label="All 374 synthetic records: activity–sleep Pearson correlation 0.193. Bubble size represents record count.">{"".join(bits)}</svg>'
+
+
+def build_sleep():
+    data=json.loads((ROOT/'sleep-study/outputs/summary.json').read_text())
+    groups=data['groups'];g=groups['all']
+    options=''.join(f'<option value="{escape(k)}">{escape(v["label"])}{(" · BMI" if k.startswith("bmi-") else " · recorded gender" if k.startswith("gender-") else "")}</option>' for k,v in groups.items())
+    bmi=''.join(f'<tr><th scope="row">{escape(label)}</th><td class="numeric">{n}</td><td>{"Small group; interpret cautiously" if n<30 else "Retained as labeled"}</td></tr>' for label,n in sorted(data['bmi_counts'].items()))
+    coef=''.join(f'<tr><th scope="row">{escape(c["term"])}</th><td class="numeric">{c["estimate"]:.6f}</td><td class="numeric">{c["standard_error"]:.6f}</td></tr>' for c in data['adjusted_model']['coefficients'])
+    body=f'''
+<section class="hero"><div><p class="eyebrow">Graduate team project / Revisited in Python</p><h1>One dataset.<br><em>Several stories.</em></h1><p class="lede">Sleep, physical activity, and the analytical judgment needed when an overall trend hides different patterns within groups.</p><div class="hero-links"><a class="button" href="#explore">Explore the relationships <span aria-hidden="true">↓</span></a><a href="{GITHUB}sleep-study">Read the analysis ↗</a></div></div><aside class="hero-note"><span class="mono">The starting point</span><span class="big-number">r = {g['pearson_r']:.3f}</span><h2>A weak overall<br>relationship.</h2><p>The picture changes when the same records are separated into groups. That is a reason to investigate context before writing a conclusion.</p></aside></section>
+<div class="source-strip"><span class="badge">Public synthetic data</span><p><strong>374 records · Kaggle version 2.</strong> The publisher created this dataset for illustration. The findings describe these records and do not establish real health effects.</p></div>
+<nav class="section-nav" aria-label="On this page"><a href="#overview">The finding</a><a href="#explore">Explore</a><a href="#method">Method &amp; evidence</a><a href="#origin">Project origin</a></nav>
+<section id="overview" class="case-section">{heading('01 / The finding','Context changes<br><em>the interpretation.</em>','A reproducible extension of the original R presentation, with the source and limitations kept visible.')}
+<div class="kpis">{kpi('Source records','374','All unique Person IDs retained')}{kpi('Distinct profiles','132','Excluding the Person ID field')}{kpi('BMI labels','4','Original categories preserved')}{kpi('Output checks','12 / 12','Match the rounded slide results')}</div>
+<div class="takeaway"><h3>Finding → implication → next step</h3><p>The pooled activity–sleep correlation is {g['pearson_r']:.3f}, while the recorded Female and Male groups show {groups['gender-female']['pearson_r']:.3f} and {groups['gender-male']['pearson_r']:.3f}. An overall association does not describe every subgroup. Check the group definitions, sample sizes and data provenance before turning a model into a recommendation.</p></div></section>
+<section id="explore" class="case-section">{heading('02 / Explore the evidence','Change the group.<br><em>Read the context.</em>','Each bubble represents one activity/score combination. Larger bubbles contain more records; the dashed line is an unadjusted least-squares fit.')}
+<div class="panel chart-grid"><div class="chart-main"><div class="panel-title"><h3>Physical activity &amp; sleep quality</h3></div>{scatter(g)}<p class="chart-caption">Exact values; no jitter. Lines span the observed activity range. The score is ordinal; the line treats it as numeric for this teaching example.</p></div>
+<aside class="chart-side"><label for="group">Select a group<select id="group" disabled>{options}</select></label><div aria-live="polite" aria-atomic="true"><h3 id="group-title">All records</h3><dl><div><dt>Records</dt><dd id="group-n">374</dd></div><div><dt>Pearson correlation</dt><dd id="group-r">{g['pearson_r']:.3f}</dd></div><div><dt>Score points per 10 activity units</dt><dd id="group-slope">+{g['slope']*10:.3f}</dd></div></dl><p id="group-note">This line describes the selected records without adjusting for age, stress or other differences. It does not estimate the effect of changing activity.</p></div></aside></div><p id="load-note" class="error-note" role="status"></p><noscript><p class="no-js">JavaScript enables group selection. The default all-records chart and analysis below remain available.</p></noscript>
+<div class="body-grid inset"><div class="panel"><h3>Keep the category labels honest</h3><div class="table-wrap"><table><caption>Original BMI labels; no undocumented category merging.</caption><thead><tr><th>Source label</th><th class="numeric">Records</th><th>Reading note</th></tr></thead><tbody>{bmi}</tbody></table></div></div><div class="panel"><h3>Repeated profiles change the weighting</h3><p>There are 242 repeated feature profiles beyond their first occurrence, but the Person IDs are distinct. The primary analysis keeps all records.</p><p>A sensitivity analysis with one row per profile changes the adjusted activity coefficient from <strong>0.008529 to 0.010746</strong>. That is a different weighting of the same synthetic patterns, not a verified correction to duplicate people.</p><div class="source-links"><a href="outputs/findings.md">Read the full findings ↗</a><a href="data/sleep-health-v2.csv" download>Download source CSV ↓</a></div></div></div></section>
+<section id="method" class="case-section">{heading('03 / Method & evidence','Reproduce first.<br><em>Interpret carefully.</em>','The adjusted model and the subgroup chart answer different descriptive questions. Neither establishes causation.')}
+<div class="compact-cards"><article><span class="method-number">01 — Preserve</span><h3>Pin the source</h3><p>Keep the original CSV unchanged, verify its SHA-256 checksum, retain literal “None” values, and reconcile all group counts to 374 records.</p></article><article><span class="method-number">02 — Reproduce</span><h3>Check the original output</h3><p>Recompute the occupation ANOVAs, adjusted regression and activity × gender model. Twelve results agree with the presentation’s displayed rounding.</p></article><article><span class="method-number">03 — Qualify</span><h3>Separate fit from evidence</h3><p>Report the synthetic source, repeated profiles, ordinal score and thin subgroups. An in-sample R² of 0.8398 is not a claim of predictive accuracy.</p></article></div>
+<details class="evidence"><summary>Inspect the adjusted regression and reproducibility checks</summary><p>Sleep quality ~ physical activity + age + stress. All 374 records; 370 residual degrees of freedom. Classical standard errors reproduce the original R output. They are not used here to make real-population significance claims.</p><div class="table-wrap"><table><caption>Independent Python replication of presentation slide 10.</caption><thead><tr><th>Term</th><th class="numeric">Coefficient</th><th class="numeric">Standard error</th></tr></thead><tbody>{coef}</tbody></table></div><p>Seven automated tests check arithmetic, an independent SciPy fit, checksums, denominators, preserved labels, interaction parameterization and rank-deficient models.</p><div class="source-links"><a href="{GITHUB.replace("/tree/", "/blob/")}sleep-study/analysis.py">Analysis code ↗</a><a href="outputs/summary.json">Full numerical results ↗</a><a href="{GITHUB.replace("/tree/", "/blob/")}sleep-study/test_analysis.py">Tests ↗</a></div></details>
+<div class="takeaway"><h3>The next analytical step</h3><p>For a real decision, obtain measured data with documented definitions, resolve category ambiguity, examine repeated observations and confounding, and choose a study design suited to the question. Including stress in a regression does not, by itself, demonstrate mediation.</p></div></section>
+<section id="origin" class="case-section">{heading('04 / Project origin','A foundation,<br><em>made inspectable.</em>')}
+<div class="body-grid"><article><h3>The original academic project</h3><p>A graduate team study used R, visualization, ANOVA, regression and interaction analysis to examine sleep quality, physical activity and BMI categories.</p><p>The supplied presentation supports the academic summary. This page credits the team and does not attribute undocumented individual tasks to one member.</p></article><article><h3>The new portfolio extension</h3><p>This Python reanalysis, interactive chart and methodological review were developed with AI assistance in September 2026. The original R script was not supplied; the new code independently reproduces its visible numerical output.</p><p>The original annotated PDF remains separate. Public source data, code, tests and written findings are available on GitHub.</p></article></div>
+<details class="evidence"><summary>Team credit and sources</summary><p><strong>Original team:</strong> Aishwarya Voraganti, Ritheesh Miridoodi, Devaharsha Gubbala, Asra Tasneem Shaik and Saranya Guvvala.</p><p><strong>Presentation:</strong> Analysis of the Relationship Between Physical Activity and Sleep Quality Across Different BMI Categories; slides 9–11 support the reproduced outputs. The reanalysis uses 374 rows from the publisher’s version 2 file.</p><div class="source-links"><a href="https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset">Kaggle source &amp; CC0 listing ↗</a><a href="source.json">Source manifest ↗</a><a href="provenance.json">Academic provenance ↗</a></div></details></section>'''
+    (ROOT/'sleep-study/index.html').write_text(shell('sleep-study','Sleep & activity: an analytical case study','A reproducible review of a graduate sleep study: 374 synthetic records, subgroup patterns, original-output reconciliation and careful interpretation.',body))
+
+
+def build_fhir():
+    data=json.loads((ROOT/'fhir-quality/outputs/summary.json').read_text());t=data['totals'];c=data['coverage']
+    rows=[]
+    for r in data['ledger']:
+        if r['status']!='Quarantined':continue
+        reasons=''.join('<span class="reason">'+escape(v.replace('_',' '))+'</span>' for v in r['errors']+r['warnings'])
+        rows.append(f'<tr><td>{r["entry"]}</td><td>{escape(r["key"])}</td><td><span class="status quarantined">Quarantined</span></td><td>{reasons}</td></tr>')
+    types=''.join(f'<option>{escape(r["type"])}</option>' for r in data['by_type'])
+    body=f'''
+<section class="hero"><div><p class="eyebrow">FHIR ETL / Graduate foundation + new demo</p><h1>Before the report,<br><em>check the records.</em></h1><p class="lede">A healthcare data pipeline is only useful when its reporting tables have defensible identities, references and denominators.</p><div class="hero-links"><a class="button" href="#explore">Inspect the quality ledger <span aria-hidden="true">↓</span></a><a href="{GITHUB}fhir-quality">Read the Python &amp; SQL ↗</a></div></div><aside class="hero-note"><span class="mono">A reporting distinction</span><span class="big-number">{c['final_observation_rows']} rows ≠ {c['final_observation_rows']} people</span><p>Ten accepted final observation rows belong to <strong>six patients</strong>. The reporting denominator includes all eight loaded patients.</p><div class="mini-counts"><div><strong>{c['with_final_observation']} / {c['patients']}</strong>With an accepted final observation</div><div><strong>{c['without_final_observation']}</strong>Without one in this fixture</div></div></aside></section>
+<div class="source-strip"><span class="badge">Synthetic local demo</span><p><strong>33 intentionally flawed fictional entries.</strong> This new portfolio extension runs offline. Its results are separate from the original academic project and professional work.</p></div>
+<nav class="section-nav" aria-label="On this page"><a href="#overview">The finding</a><a href="#explore">Quality ledger</a><a href="#method">Reporting rules</a><a href="#origin">Project origin</a></nav>
+<section id="overview" class="case-section">{heading('01 / The finding','Every record needs<br><em>a clear disposition.</em>','A scoped Python pipeline classifies incoming resources, loads accepted rows into SQLite and checks the reporting totals.')}
+<div class="kpis">{kpi('Input entries',t['input_entries'],'Every source entry accounted for')}{kpi('Loaded',t['loaded'],'Includes one record with a warning')}{kpi('Quarantined',t['quarantined'],'Invalid, ambiguous or out of scope')}{kpi('Reconciliations','5 / 5','Including the patient denominator')}</div>
+<div class="takeaway"><h3>Finding → implication → next step</h3><p>Ten of 33 demo entries need review, and two loaded patients have no accepted final observation. Resolve identity and reference issues before reporting; count distinct patients and preserve those with no qualifying records.</p></div></section>
+<section id="explore" class="case-section">{heading('02 / Inspect the source decisions','The quality ledger.<br><em>No silent exclusions.</em>','One entry can fail several rules. Issue counts therefore differ from the number of quarantined entries.')}
+<div class="panel"><div class="panel-title"><h3>Input entry dispositions</h3><p>Read-only results from the local pipeline</p></div><div class="filters"><label for="disposition">Disposition<select id="disposition" disabled><option>All</option><option selected>Quarantined</option><option>Loaded</option><option>Loaded with warning</option></select></label><label for="resource-type">Resource type<select id="resource-type" disabled><option>All</option>{types}</select></label><p id="ledger-count" class="count" role="status">10 of 33 input entries</p></div>
+<div class="table-wrap"><table class="ledger"><caption>Quarantine means “do not use in this reporting profile until reviewed.” It does not always mean invalid FHIR.</caption><thead><tr><th>Entry</th><th>Resource identity</th><th>Disposition</th><th>Reasons</th></tr></thead><tbody id="ledger-body">{''.join(rows)}</tbody></table></div><p id="load-note" class="error-note" role="status"></p><noscript><p class="no-js">JavaScript enables filtering. The default quarantine ledger remains available.</p></noscript></div>
+<div class="body-grid inset"><article class="panel"><h3>Missing does not mean invented</h3><p>One accepted Patient has no birth date. It loads with a warning and keeps a null. Partial dates keep their original precision.</p><p>A duplicate identity receives a different treatment: every copy is quarantined because the input provides no authoritative winner.</p></article><article class="panel"><h3>Validity and report inclusion differ</h3><p>A preliminary observation can load successfully but remain outside a final-only report. The SQL uses a left join so patients without qualifying observations remain in the denominator.</p><p><strong>Coverage is a property of this fixture.</strong> It is not a care-gap rate or a judgment about a patient’s treatment.</p></article></div></section>
+<section id="method" class="case-section">{heading('03 / Reporting rules','Make the decisions<br><em>visible in the code.</em>','The original ETL theme becomes an analyst-focused exercise in relational integrity, repeatable rules and explainable reporting.')}
+<div class="compact-cards"><article><span class="method-number">01 — Validate</span><h3>Protect identity</h3><p>Check resource IDs and full URLs. Resolve only exact Patient references; a matching ID on another server is not automatically the same patient.</p></article><article><span class="method-number">02 — Load</span><h3>Keep the relationships</h3><p>Load accepted patients before dependent observations and conditions. Foreign keys enforce the same relationships in the reporting tables.</p></article><article><span class="method-number">03 — Reconcile</span><h3>Check the denominator</h3><p>Input equals loaded plus quarantined. Patients with and without accepted final observations sum back to the loaded patient population.</p></article></div>
+<div class="body-grid inset"><div><h3>A small SQL choice with a large implication</h3><pre class="code-sample"><code>SELECT p.patient_id,
+       COUNT(o.observation_id) AS final_rows
+FROM patient p
+LEFT JOIN observation o
+  ON p.patient_id = o.patient_id
+ AND o.status = 'final'
+GROUP BY p.patient_id;</code></pre><p class="footnote">The status condition belongs in the join here. Moving it to a WHERE filter would drop patients with no qualifying observation.</p></div><div class="panel"><h3>What is verified</h3><p>Nine tests cover duplicate handling, exact reference namespaces, input-order independence, dependent invalidation, missing dates, empty data, non-mutation and malformed coding.</p><p>Five reconciliation checks verify entry counts, type totals, patient coverage, foreign keys and preserved null birth dates.</p><div class="source-links"><a href="{GITHUB.replace("/tree/", "/blob/")}fhir-quality/test_pipeline.py">Inspect the tests ↗</a><a href="{GITHUB}fhir-quality/sql">Read the SQL ↗</a></div></div></div>
+<details class="evidence"><summary>Read the exact scope and limitations</summary><p>This local profile supports Patient, scalar heart-rate Observation and single-coding Condition resources in a collection Bundle. Observations require LOINC 8867-4, UCUM /min and a timestamp with timezone. Conditions use a fictional code system. All data is invented.</p><p>The pipeline preserves coding namespaces and performs no SNOMED remapping. It does not implement full FHIR conformance, terminology validation, API extraction, authentication, pagination, clinical plausibility or production security. An otherwise valid FHIR resource can be out of scope here.</p><p>The reporting rule includes status exactly “final”; amended and corrected observations are not included. Missing optional demographics stay null. Birth-date plausibility uses the fixture reference date of January 31, 2026.</p><div class="source-links"><a href="outputs/findings.md">Written findings ↗</a><a href="outputs/summary.json">Full results ↗</a><a href="data/demo-bundle.json" download>Download the fixture ↓</a></div></details></section>
+<section id="origin" class="case-section">{heading('04 / Project origin','From exchanging data<br><em>to trusting a report.</em>')}
+<div class="body-grid"><article><h3>The original academic project</h3><p>“FHIR Works: Connecting Healthcare with Data Standards” documented a team workflow for Python API extraction, access-token handling, terminology lookups, and posting Patient, Condition, Observation and Procedure resources.</p><p>The supplied presentation supports this summary. Individual task ownership is not documented, so the work is credited to the team.</p></article><article><h3>The new portfolio extension</h3><p>The runnable Python/SQL demo was developed with AI assistance in September 2026. It is new code focused on data quality and reporting; the team’s original university source files were not supplied.</p><p>The new architecture separates processes from decisions, and the reporting example replaces unsupported claims of clinical or operational impact with inspectable results.</p></article></div>
+<details class="evidence"><summary>Team credit and standards references</summary><p><strong>Original team:</strong> Vaishnavi Medasani, Sai Pallavi Bramhanapalli, Nigama Pervala, Yugala Ramula and Devaharsha Gubbala.</p><p>The original annotated deck remains separate from the published demo. The implementation uses a deliberately narrow R4 reporting profile; these references document the broader standard.</p><div class="source-links"><a href="https://hl7.org/fhir/R4/bundle.html">HL7 Bundle ↗</a><a href="https://hl7.org/fhir/R4/references.html">Resource references ↗</a><a href="https://hl7.org/fhir/R4/observation-vitalsigns.html">Vital signs ↗</a><a href="provenance.json">Academic provenance ↗</a></div></details></section>'''
+    (ROOT/'fhir-quality/index.html').write_text(shell('fhir-quality','FHIR ETL & data quality','An academic FHIR project extended with an offline Python and SQL demo: record validation, a quarantine ledger and patient-level reporting denominators.',body))
+
+
+if __name__=='__main__':
+    build_sleep();build_fhir()
+    print('Built sleep-study/index.html and fhir-quality/index.html')
