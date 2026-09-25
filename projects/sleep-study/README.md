@@ -2,6 +2,8 @@
 
 [Open the case study](https://devaharshagubbala07-hub.github.io/projects/sleep-study/) · [Findings](outputs/findings.md) · [Source manifest](source.json)
 
+![Interactive sleep and physical activity case study](preview.jpg)
+
 **Question:** Does the relationship between physical activity and sleep quality look the same across groups?
 
 The pooled correlation is weak (r = 0.193), and the direction differs between the recorded gender groups. Four BMI labels, a small subgroup and repeated feature profiles all change how the results should be interpreted. This project demonstrates reproducibility, segmentation and careful communication of model limitations.
