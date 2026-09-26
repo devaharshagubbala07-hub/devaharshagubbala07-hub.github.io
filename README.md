@@ -4,6 +4,8 @@ Personal portfolio covering healthcare claims analysis, reporting, dashboard val
 
 ## Featured work
 
+[Browse the project directory](https://devaharshagubbala07-hub.github.io/#projects). The three featured analyses and the academic case studies below are linked from the portfolio's **Projects** navigation item. The directory and all five takeaway summaries are static HTML, so they remain available without JavaScript. Existing `#demo`, `#more-projects` and `#academic` links still work.
+
 **[Claims cost explorer](https://devaharshagubbala07-hub.github.io/demo/):** a working Python and SQL demonstration with synthetic data, documented definitions, quality checks and a filterable dashboard. [Source repository](https://github.com/devaharshagubbala07-hub/healthcare-claims-analytics).
 
 **[Prescription spending & GLP-1 trends](https://devaharshagubbala07-hub.github.io/projects/prescription-spending/):** real public CMS data, released June 2026 and covering 2020–2024. Spending concentration and a claim-count/average-spend decomposition. [Source repository](https://github.com/devaharshagubbala07-hub/prescription-spending-analysis).
@@ -30,7 +32,7 @@ The site uses an analyst’s desk theme: deep navy, white paper, restrained blue
 
 - The opening chart switches between two reporting years using the same pipeline results as the claims demonstration.
 - A short About section connects Devaharsha's health informatics education and current reporting work, with a direct navigation link.
-- The Analysis Lab includes a selectable SQL excerpt from the demonstration's `sql/schema.sql`, with a plain-language explanation, source link, and static grid backdrop. It shares the site's brief reveal animation and motion preferences.
+- The Projects section includes a selectable SQL excerpt from the demonstration's `sql/schema.sql`, with a plain-language explanation, source link, and static grid backdrop. It shares the site's brief reveal animation and motion preferences.
 - The reporting-method notebook shows how questions, population definitions, validation, and interpretation fit together.
 - Brief entrance, chart, and scroll animations respect `prefers-reduced-motion`. A motion switch also saves a visitor’s preference locally.
 - Navigation, case notes, and the static chart remain readable without JavaScript. Interactive controls use native buttons and visible keyboard focus.
@@ -49,6 +51,16 @@ python projects/build_case_studies.py
 ```
 
 The FHIR pipeline uses the standard library. Install the sleep project's pinned NumPy/SciPy requirements before running its analysis. Each project has its own tests and source documentation. The page builder uses the generated outputs to keep the default chart and ledger readable without JavaScript; the scripts add filtering. Run the builder after an analysis refresh.
+
+All academic generators explicitly read and write UTF-8, including on Windows. This avoids encoding errors when writing mathematical symbols and navigation arrows.
+
+## Check the website
+
+```bash
+python scripts/check_site.py
+```
+
+Requires Python 3.11+ and Node.js. Checks local page links, fragment targets, duplicate IDs, images, CSS assets, dashboard data files, JSON, and JavaScript syntax. External destinations need a separate online check. Also inspect the site in a browser and exercise its filters before publishing.
 
 ## Background artwork
 

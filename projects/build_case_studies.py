@@ -53,7 +53,7 @@ def scatter(g):
 
 
 def build_sleep():
-    data=json.loads((ROOT/'sleep-study/outputs/summary.json').read_text())
+    data=json.loads((ROOT/'sleep-study/outputs/summary.json').read_text(encoding="utf-8"))
     groups=data['groups'];g=groups['all']
     options=''.join(f'<option value="{escape(k)}">{escape(v["label"])}{(" · BMI" if k.startswith("bmi-") else " · recorded gender" if k.startswith("gender-") else "")}</option>' for k,v in groups.items())
     bmi=''.join(f'<tr><th scope="row">{escape(label)}</th><td class="numeric">{n}</td><td>{"Small group; interpret cautiously" if n<30 else "Retained as labeled"}</td></tr>' for label,n in sorted(data['bmi_counts'].items()))
@@ -76,11 +76,11 @@ def build_sleep():
 <section id="origin" class="case-section">{heading('04 / Project origin','A foundation,<br><em>made inspectable.</em>')}
 <div class="body-grid"><article><h3>The original academic project</h3><p>A graduate team study used R, visualization, ANOVA, regression and interaction analysis to examine sleep quality, physical activity and BMI categories.</p><p>The supplied presentation supports the academic summary. This page credits the team and does not attribute undocumented individual tasks to one member.</p></article><article><h3>The new portfolio extension</h3><p>This Python reanalysis, interactive chart and methodological review were developed with AI assistance in September 2026. The original R script was not supplied; the new code independently reproduces its visible numerical output.</p><p>The original annotated PDF remains separate. Public source data, code, tests and written findings are available on GitHub.</p></article></div>
 <details class="evidence"><summary>Team credit and sources</summary><p><strong>Original team:</strong> Aishwarya Voraganti, Ritheesh Miridoodi, Devaharsha Gubbala, Asra Tasneem Shaik and Saranya Guvvala.</p><p><strong>Presentation:</strong> Analysis of the Relationship Between Physical Activity and Sleep Quality Across Different BMI Categories; slides 9–11 support the reproduced outputs. The reanalysis uses 374 rows from the publisher’s version 2 file.</p><div class="source-links"><a href="https://www.kaggle.com/datasets/uom190346a/sleep-health-and-lifestyle-dataset">Kaggle source &amp; CC0 listing ↗</a><a href="source.json">Source manifest ↗</a><a href="provenance.json">Academic provenance ↗</a></div></details></section>'''
-    (ROOT/'sleep-study/index.html').write_text(shell('sleep-study','Sleep & activity: an analytical case study','A reproducible review of a graduate sleep study: 374 synthetic records, subgroup patterns, original-output reconciliation and careful interpretation.',body))
+    (ROOT/'sleep-study/index.html').write_text(shell('sleep-study','Sleep & activity: an analytical case study','A reproducible review of a graduate sleep study: 374 synthetic records, subgroup patterns, original-output reconciliation and careful interpretation.',body), encoding="utf-8")
 
 
 def build_fhir():
-    data=json.loads((ROOT/'fhir-quality/outputs/summary.json').read_text());t=data['totals'];c=data['coverage']
+    data=json.loads((ROOT/'fhir-quality/outputs/summary.json').read_text(encoding="utf-8"));t=data['totals'];c=data['coverage']
     rows=[]
     for r in data['ledger']:
         if r['status']!='Quarantined':continue
@@ -111,7 +111,7 @@ GROUP BY p.patient_id;</code></pre><p class="footnote">The status condition belo
 <section id="origin" class="case-section">{heading('04 / Project origin','From exchanging data<br><em>to trusting a report.</em>')}
 <div class="body-grid"><article><h3>The original academic project</h3><p>“FHIR Works: Connecting Healthcare with Data Standards” documented a team workflow for Python API extraction, access-token handling, terminology lookups, and posting Patient, Condition, Observation and Procedure resources.</p><p>The supplied presentation supports this summary. Individual task ownership is not documented, so the work is credited to the team.</p></article><article><h3>The new portfolio extension</h3><p>The runnable Python/SQL demo was developed with AI assistance in September 2026. It is new code focused on data quality and reporting; the team’s original university source files were not supplied.</p><p>The new architecture separates processes from decisions, and the reporting example replaces unsupported claims of clinical or operational impact with inspectable results.</p></article></div>
 <details class="evidence"><summary>Team credit and standards references</summary><p><strong>Original team:</strong> Vaishnavi Medasani, Sai Pallavi Bramhanapalli, Nigama Pervala, Yugala Ramula and Devaharsha Gubbala.</p><p>The original annotated deck remains separate from the published demo. The implementation uses a deliberately narrow R4 reporting profile; these references document the broader standard.</p><div class="source-links"><a href="https://hl7.org/fhir/R4/bundle.html">HL7 Bundle ↗</a><a href="https://hl7.org/fhir/R4/references.html">Resource references ↗</a><a href="https://hl7.org/fhir/R4/observation-vitalsigns.html">Vital signs ↗</a><a href="provenance.json">Academic provenance ↗</a></div></details></section>'''
-    (ROOT/'fhir-quality/index.html').write_text(shell('fhir-quality','FHIR ETL & data quality','An academic FHIR project extended with an offline Python and SQL demo: record validation, a quarantine ledger and patient-level reporting denominators.',body))
+    (ROOT/'fhir-quality/index.html').write_text(shell('fhir-quality','FHIR ETL & data quality','An academic FHIR project extended with an offline Python and SQL demo: record validation, a quarantine ledger and patient-level reporting denominators.',body), encoding="utf-8")
 
 
 if __name__=='__main__':

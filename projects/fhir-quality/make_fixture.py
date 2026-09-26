@@ -44,4 +44,4 @@ def make_bundle():
 
 if __name__=="__main__":
     (ROOT/"data").mkdir(exist_ok=True)
-    (ROOT/"data/demo-bundle.json").write_text(json.dumps(make_bundle(),indent=2)+"\n")
+    (ROOT/"data/demo-bundle.json").write_text(json.dumps(make_bundle(),indent=2)+"\n", encoding="utf-8")

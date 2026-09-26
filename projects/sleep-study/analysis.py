@@ -144,7 +144,7 @@ def main():
     result = analyze(read_source())
     output = ROOT / "outputs"
     output.mkdir(exist_ok=True)
-    (output / "summary.json").write_text(json.dumps(result, indent=2, allow_nan=False)+"\n")
+    (output / "summary.json").write_text(json.dumps(result, indent=2, allow_nan=False)+"\n", encoding="utf-8")
     a = result["adjusted_model"]["coefficients"]
     s = result["unique_profile_sensitivity"]["coefficients"]
     (output / "findings.md").write_text(f"""# What changes when the context changes?
@@ -184,7 +184,7 @@ Do not translate these model outputs into workplace wellness recommendations.
 For a real analysis, first verify data provenance, label definitions, sample sizes,
 dependence between records and the decision being supported; then use a suitable
 design and validation plan. A strong in-sample fit alone is not predictive validation.
-""")
+""", encoding="utf-8")
     print(json.dumps({k: result[k] for k in ["records", "unique_profiles", "bmi_counts"]}))
     print(f"{len(result['reconciliation'])} slide-output reconciliations passed")
 

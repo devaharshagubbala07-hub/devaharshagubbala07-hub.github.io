@@ -105,7 +105,7 @@ def run(bundle):
     records=classify(bundle)
     db=sqlite3.connect(":memory:")
     db.row_factory=sqlite3.Row
-    db.executescript((ROOT/"sql/schema.sql").read_text())
+    db.executescript((ROOT/"sql/schema.sql").read_text(encoding="utf-8"))
     # Load parent rows before their dependents, regardless of Bundle order.
     for row in sorted(records, key=lambda r: r["type"] != "Patient"):
         db.execute("INSERT INTO audit VALUES(?,?,?,?,?)",(row["entry"],row["type"],row["key"],row["status"],"; ".join(row["errors"]+row["warnings"])))
@@ -118,7 +118,7 @@ def run(bundle):
         elif row["type"]=="Condition":
             coding=r["code"]["coding"][0]
             db.execute("INSERT INTO condition_record VALUES(?,?,?,?)",(r["id"],row["patient_id"],coding["system"],coding["code"]))
-    coverage=dict(db.execute((ROOT/"sql/coverage.sql").read_text()).fetchone())
+    coverage=dict(db.execute((ROOT/"sql/coverage.sql").read_text(encoding="utf-8")).fetchone())
     accepted=[r for r in records if not r["errors"]]
     ledger=[{k:r[k] for k in ["entry","type","key","status","errors","warnings"]} for r in records]
     totals={"input_entries":len(records),"loaded":len(accepted),"quarantined":len(records)-len(accepted),
@@ -146,10 +146,10 @@ def run(bundle):
 
 
 def main():
-    bundle=json.loads((ROOT/"data/demo-bundle.json").read_text())
+    bundle=json.loads((ROOT/"data/demo-bundle.json").read_text(encoding="utf-8"))
     result=run(bundle)
     out=ROOT/"outputs";out.mkdir(exist_ok=True)
-    (out/"summary.json").write_text(json.dumps(result,indent=2,allow_nan=False)+"\n")
+    (out/"summary.json").write_text(json.dumps(result,indent=2,allow_nan=False)+"\n", encoding="utf-8")
     t=result["totals"];c=result["coverage"]
     (out/"findings.md").write_text(f"""# Data quality before the denominator
 
@@ -180,7 +180,7 @@ The pipeline implements a small local reporting profile for Patient, scalar
 heart-rate Observation and single-coding Condition resources. A valid FHIR
 resource can fall outside this profile. Passing these checks is not full FHIR
 conformance, clinical validation, or evidence of privacy compliance.
-""")
+""", encoding="utf-8")
     print(json.dumps({"totals":t,"coverage":c,"checks":result["checks"]}))
 
 
