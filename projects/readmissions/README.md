@@ -4,6 +4,8 @@
 
 [Open the interactive case study](https://devaharshagubbala07-hub.github.io/projects/readmissions/) · [Read the findings](outputs/findings.md) · [Inspect the source](source.json)
 
+![Hospital readmissions explorer](preview.jpg)
+
 ## The question
 
 Where should an Indiana hospital quality team investigate first, and how does missing published information affect the comparison?
