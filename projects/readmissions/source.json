@@ -1,0 +1,22 @@
+{
+  "publisher": "Centers for Medicare & Medicaid Services (CMS)",
+  "dataset_id": "9n3s-kdb3",
+  "dataset_title": "Hospital Readmissions Reduction Program",
+  "landing_url": "https://data.cms.gov/provider-data/dataset/9n3s-kdb3",
+  "download_url": "https://data.cms.gov/provider-data/sites/default/files/resources/a171bc36c488d3e0dc33ec63abb469a6_1770163617/FY_2026_Hospital_Readmissions_Reduction_Program_Hospital.csv",
+  "metadata_url": "https://data.cms.gov/provider-data/api/1/metastore/schemas/dataset/items/9n3s-kdb3",
+  "data_dictionary_url": "https://data.cms.gov/provider-data/sites/default/files/data_dictionaries/hospital/HOSPITAL_Data_Dictionary.pdf",
+  "program_url": "https://www.cms.gov/medicare/payment/prospective-payment-systems/acute-inpatient-pps/hospital-readmissions-reduction-program-hrrp",
+  "program_fiscal_year": 2026,
+  "catalog_modified": "2026-01-26",
+  "catalog_released": "2026-08-13",
+  "retrieved": "2026-09-26",
+  "measurement_start": "2021-07-01",
+  "measurement_end": "2024-06-30",
+  "expected_rows": 18330,
+  "expected_facilities": 3055,
+  "sha256": "7e7915dd2751a1e59ac46dbc9194fb781e820962a04d47c31344ea2bb30c91f6",
+  "raw_bytes": 2068464,
+  "access": "Public aggregate hospital data; no patient-level records",
+  "source_storage": "Original source downloaded from pinned CMS URL; not bundled in this repository. Derived Indiana CSV and summaries are included."
+}

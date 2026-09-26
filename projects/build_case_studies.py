@@ -1,4 +1,4 @@
-"""Build the two static-first academic case studies from their analysis outputs.
+"""Build the active supporting case studies from their analysis outputs.
 
 Run the analyses first, then: python projects/build_case_studies.py
 Interactive scripts enhance complete default charts/tables, not empty containers.
@@ -59,7 +59,7 @@ def build_sleep():
     bmi=''.join(f'<tr><th scope="row">{escape(label)}</th><td class="numeric">{n}</td><td>{"Small group; interpret cautiously" if n<30 else "Retained as labeled"}</td></tr>' for label,n in sorted(data['bmi_counts'].items()))
     coef=''.join(f'<tr><th scope="row">{escape(c["term"])}</th><td class="numeric">{c["estimate"]:.6f}</td><td class="numeric">{c["standard_error"]:.6f}</td></tr>' for c in data['adjusted_model']['coefficients'])
     body=f'''
-<section class="hero"><div><p class="eyebrow">Graduate team project / Revisited in Python</p><h1>One dataset.<br><em>Several stories.</em></h1><p class="lede">Sleep, physical activity, and the analytical judgment needed when an overall trend hides different patterns within groups.</p><div class="hero-links"><a class="button" href="#explore">Explore the relationships <span aria-hidden="true">↓</span></a><a href="{GITHUB}sleep-study">Read the analysis ↗</a></div></div><aside class="hero-note"><span class="mono">The starting point</span><span class="big-number">r = {g['pearson_r']:.3f}</span><h2>A weak overall<br>relationship.</h2><p>The picture changes when the same records are separated into groups. That is a reason to investigate context before writing a conclusion.</p></aside></section>
+<section class="hero"><div><p class="eyebrow">Archived academic project / Revisited in Python</p><h1>One dataset.<br><em>Several stories.</em></h1><p class="lede">Sleep, physical activity, and the analytical judgment needed when an overall trend hides different patterns within groups.</p><div class="hero-links"><a class="button" href="#explore">Explore the relationships <span aria-hidden="true">↓</span></a><a href="{GITHUB}sleep-study">Read the analysis ↗</a></div></div><aside class="hero-note"><span class="mono">The starting point</span><span class="big-number">r = {g['pearson_r']:.3f}</span><h2>A weak overall<br>relationship.</h2><p>The picture changes when the same records are separated into groups. That is a reason to investigate context before writing a conclusion.</p></aside></section>
 <div class="source-strip"><span class="badge">Public synthetic data</span><p><strong>374 records · Kaggle version 2.</strong> The publisher created this dataset for illustration. The findings describe these records and do not establish real health effects.</p></div>
 <nav class="section-nav" aria-label="On this page"><a href="#overview">The finding</a><a href="#explore">Explore</a><a href="#method">Method &amp; evidence</a><a href="#origin">Project origin</a></nav>
 <section id="overview" class="case-section">{heading('01 / The finding','Context changes<br><em>the interpretation.</em>','A reproducible extension of the original R presentation, with the source and limitations kept visible.')}
@@ -115,5 +115,10 @@ GROUP BY p.patient_id;</code></pre><p class="footnote">The status condition belo
 
 
 if __name__=='__main__':
-    build_sleep();build_fhir()
-    print('Built sleep-study/index.html and fhir-quality/index.html')
+    import runpy
+    import sys
+    build_fhir()
+    runpy.run_path(str(ROOT/'readmissions/build_page.py'), run_name='__main__')
+    if '--include-archive' in sys.argv:
+        build_sleep()
+    print('Built active case studies: fhir-quality and readmissions')

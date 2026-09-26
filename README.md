@@ -4,7 +4,7 @@ Personal portfolio covering healthcare claims analysis, reporting, dashboard val
 
 ## Featured work
 
-[Browse the project directory](https://devaharshagubbala07-hub.github.io/#projects). The three featured analyses and the academic case studies below are linked from the portfolio's **Projects** navigation item. The directory and all five takeaway summaries are static HTML, so they remain available without JavaScript. Existing `#demo`, `#more-projects` and `#academic` links still work.
+[Browse the project directory](https://devaharshagubbala07-hub.github.io/#projects). The three featured analyses and the supporting case studies below are linked from the portfolio's **Projects** navigation item. The directory and all five takeaway summaries are static HTML, so they remain available without JavaScript. Existing `#demo`, `#more-projects` and `#academic` links still work.
 
 **[Claims cost explorer](https://devaharshagubbala07-hub.github.io/demo/):** a working Python and SQL demonstration with synthetic data, documented definitions, quality checks and a filterable dashboard. [Source repository](https://github.com/devaharshagubbala07-hub/healthcare-claims-analytics).
 
@@ -19,10 +19,10 @@ Four professional case studies:
 - Healthcare dashboard migration and validation
 - Diabetes population and quality analysis
 
-Two academic case studies with new, clearly labeled extensions:
+Two supporting case studies with explicit project origins:
 
 - **[FHIR ETL & Data Quality](https://devaharshagubbala07-hub.github.io/projects/fhir-quality/):** team-project context plus a new offline Python/SQL demo. Thirty-three fictional entries, a filterable quality ledger, patient-level coverage, nine tests and five reconciliations. [Source and methods](projects/fhir-quality/).
-- **[Sleep & Physical Activity](https://devaharshagubbala07-hub.github.io/projects/sleep-study/):** independently reproduces 12 rounded outputs from the original R team presentation using a pinned public synthetic dataset. Interactive subgroup exploration, seven tests, repeated-profile sensitivity and explicit limitations. [Source and methods](projects/sleep-study/).
+- **[Hospital Readmissions & Quality Benchmarking](https://devaharshagubbala07-hub.github.io/projects/readmissions/):** independent analysis of real CMS data, covering 82 Indiana hospitals and six measures with national context. Python, SQL, explicit missing-data rules, nine tests and 48 cohort reconciliations. [Source and methods](projects/readmissions/).
 
 This repository contains the portfolio website and the three featured dashboards. Earlier operations and migration exercises remain available at their existing URLs. The new independent projects were developed with AI assistance. The claims and AI-value examples use generated records; the prescription project uses public CMS aggregate data with a pinned source and visible observation dates. These projects are separate from the professional case notes and earlier academic work. The original academic team code was not supplied. Both academic case studies credit their teams and label the newly written, AI-assisted portfolio code separately. The sleep source is publisher-created synthetic educational data; the FHIR fixture is newly generated. Original annotated group PDFs are not redistributed. Professional examples use general descriptions without client data or internal deliverables.
 
@@ -42,17 +42,18 @@ The standalone project pages at `projects/prescription-spending/` and `projects/
 
 The `demo/dashboard.css` file is also maintained in the analysis repository at `dashboard/dashboard.css` so a freshly generated demo retains the same appearance.
 
-## Rebuild the academic case studies
+## Rebuild the supporting case studies
 
 ```bash
 python projects/fhir-quality/pipeline.py
-python projects/sleep-study/analysis.py
+python projects/readmissions/download_source.py
+python projects/readmissions/analysis.py
 python projects/build_case_studies.py
 ```
 
-The FHIR pipeline uses the standard library. Install the sleep project's pinned NumPy/SciPy requirements before running its analysis. Each project has its own tests and source documentation. The page builder uses the generated outputs to keep the default chart and ledger readable without JavaScript; the scripts add filtering. Run the builder after an analysis refresh.
+Both active analyses use the Python standard library. The page builders keep baseline findings, charts and tables readable without JavaScript. The scripts add filtering. All generators read and write UTF-8, including on Windows.
 
-All academic generators explicitly read and write UTF-8, including on Windows. This avoids encoding errors when writing mathematical symbols and navigation arrows.
+The original Sleep academic case study is retained at its existing URL as an archive and is no longer listed in the portfolio showcase. Its source, team credits and project history remain intact.
 
 ## Check the website
 

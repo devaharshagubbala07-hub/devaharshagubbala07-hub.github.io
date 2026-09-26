@@ -1,5 +1,7 @@
 # Sleep, activity & analytical judgment
 
+> Archived academic case study. Replaced in the portfolio showcase by [Hospital Readmissions & Quality Benchmarking](../readmissions/). The original academic record and reproducible reanalysis remain available here.
+
 [Open the case study](https://devaharshagubbala07-hub.github.io/projects/sleep-study/) · [Findings](outputs/findings.md) · [Source manifest](source.json)
 
 ![Interactive sleep and physical activity case study](preview.jpg)
