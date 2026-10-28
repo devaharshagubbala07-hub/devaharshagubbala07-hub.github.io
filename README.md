@@ -1,80 +1,58 @@
-# Devaharsha Gubbala | Healthcare Analytics Portfolio
+# Devaharsha Gubbala — Healthcare Analytics Portfolio
 
-Personal portfolio covering healthcare claims analysis, reporting, dashboard validation, and health informatics.
+[Open the portfolio](https://devaharshagubbala07-hub.github.io/).
 
-## Featured work
+Reporting Analyst at Merative, **January 2026–Present**. The professional case notes describe claims reporting, cohort definitions, cost and utilization reporting, and dashboard migration checks. Client names, data and internal deliverables remain private.
 
-[Browse the project directory](https://devaharshagubbala07-hub.github.io/#projects). The three featured analyses and the supporting case studies below are linked from the portfolio's **Projects** navigation item. The directory and all five takeaway summaries are static HTML, so they remain available without JavaScript. Existing `#demo`, `#more-projects` and `#academic` links still work.
+## Featured projects
 
-**[Claims cost explorer](https://devaharshagubbala07-hub.github.io/demo/):** a working Python and SQL demonstration with synthetic data, documented definitions, quality checks and a filterable dashboard. [Source repository](https://github.com/devaharshagubbala07-hub/healthcare-claims-analytics).
+| Project | Data | Focus |
+| --- | --- | --- |
+| [Claims cost explorer](https://devaharshagubbala07-hub.github.io/demo/) | Synthetic enrollment and claims | PMPM denominators, quarantine rules and cost comparisons |
+| [Prescription spending](https://devaharshagubbala07-hub.github.io/projects/prescription-spending/) | Public CMS aggregate data, 2020–2024 observations | Spending concentration, fill counts and average spending per fill |
+| [Hospital readmissions](projects/readmissions/) | Public CMS hospital aggregates, July 2021–June 2024 observations | Condition-specific benchmarking and missing-data exclusions |
 
-**[Prescription spending & GLP-1 trends](https://devaharshagubbala07-hub.github.io/projects/prescription-spending/):** real public CMS data, released June 2026 and covering 2020–2024. Spending concentration and a claim-count/average-spend decomposition. [Source repository](https://github.com/devaharshagubbala07-hub/prescription-spending-analysis).
+These independent portfolio projects were developed with AI assistance in September 2026. They are separate from employer work and graduate coursework. Their source manifests, methods, code and limitations are available in the linked repositories.
 
-**[AI spend & value monitor](https://devaharshagubbala07-hub.github.io/projects/ai-value/):** synthetic task costs, retries, review/rework, quality thresholds, and an adjustable capacity-value scenario. [Source repository](https://github.com/devaharshagubbala07-hub/ai-spend-value-monitor).
+## Supporting and archived work
 
-Four professional case studies:
+- [FHIR ETL & data quality](projects/fhir-quality/): original graduate team context plus a separate AI-assisted demo. Individual academic task ownership is not documented; the original team is credited.
+- [AI workflow cost model](projects/ai-value/): a supporting synthetic scenario analysis with illustrative costs and workload assumptions.
+- [Appointment operations](projects/operations/) and [reporting migration](projects/migration/) are additional synthetic exercises retained at their existing URLs.
+- [Sleep & physical activity](projects/sleep-study/) is an archived academic case study and is not featured on the homepage.
 
-- Healthcare program cohort analysis
-- High-cost claimant and cost trend analysis
-- Healthcare dashboard migration and validation
-- Diabetes population and quality analysis
+The prescription-spending repository also contains an **unfinished Power BI extension**. File/schema checks do not verify Power BI Desktop refresh, DAX evaluation or rendering. It is not showcased as a completed report.
 
-Two supporting case studies with explicit project origins:
+## Run locally
 
-- **[FHIR ETL & Data Quality](https://devaharshagubbala07-hub.github.io/projects/fhir-quality/):** team-project context plus a new offline Python/SQL demo. Thirty-three fictional entries, a filterable quality ledger, patient-level coverage, nine tests and five reconciliations. [Source and methods](projects/fhir-quality/).
-- **[Hospital Readmissions & Quality Benchmarking](https://devaharshagubbala07-hub.github.io/projects/readmissions/):** independent analysis of real CMS data, covering 82 Indiana hospitals and six measures with national context. Python, SQL, explicit missing-data rules, nine tests and 48 cohort reconciliations. [Source and methods](projects/readmissions/).
+```bash
+python -m http.server 8000
+```
 
-This repository contains the portfolio website and the three featured dashboards. Earlier operations and migration exercises remain available at their existing URLs. The new independent projects were developed with AI assistance. The claims and AI-value examples use generated records; the prescription project uses public CMS aggregate data with a pinned source and visible observation dates. These projects are separate from the professional case notes and earlier academic work. The original academic team code was not supplied. Both academic case studies credit their teams and label the newly written, AI-assisted portfolio code separately. The sleep source is publisher-created synthetic educational data; the FHIR fixture is newly generated. Original annotated group PDFs are not redistributed. Professional examples use general descriptions without client data or internal deliverables.
+Open `http://localhost:8000/`. HTTP is required for dashboards that load JSON. Main content and baseline case-study charts remain readable without JavaScript. Motion respects reduced-motion preferences and the site's motion switch.
 
-## Design and interaction
-
-The site uses an analyst’s desk theme: deep navy, white paper, restrained blue accents, editorial type, numbered case notes, and chart details. No third-party fonts, animation libraries, trackers, or build dependencies are required.
-
-- The opening chart switches between two reporting years using the same pipeline results as the claims demonstration.
-- A short About section connects Devaharsha's health informatics education and current reporting work, with a direct navigation link.
-- The Projects section includes a selectable SQL excerpt from the demonstration's `sql/schema.sql`, with a plain-language explanation, source link, and static grid backdrop. It shares the site's brief reveal animation and motion preferences.
-- The reporting-method notebook shows how questions, population definitions, validation, and interpretation fit together.
-- Brief entrance, chart, and scroll animations respect `prefers-reduced-motion`. A motion switch also saves a visitor’s preference locally.
-- Navigation, case notes, and the static chart remain readable without JavaScript. Interactive controls use native buttons and visible keyboard focus.
-- Layouts adapt to narrow screens; the mobile menu closes with Escape and restores focus to its button.
-
-The standalone project pages at `projects/prescription-spending/` and `projects/ai-value/` mirror the `dashboard/` directories in their respective analysis repositories. Their local JSON data is generated by the Python pipelines; keep these copies aligned when regenerating outputs.
-
-The `demo/dashboard.css` file is also maintained in the analysis repository at `dashboard/dashboard.css` so a freshly generated demo retains the same appearance.
-
-## Rebuild the supporting case studies
+## Rebuild case studies
 
 ```bash
 python projects/fhir-quality/pipeline.py
 python projects/readmissions/download_source.py
 python projects/readmissions/analysis.py
+python projects/readmissions/build_page.py
 python projects/build_case_studies.py
 ```
 
-Both active analyses use the Python standard library. The page builders keep baseline findings, charts and tables readable without JavaScript. The scripts add filtering. All generators read and write UTF-8, including on Windows.
+The last command builds FHIR and the archived Sleep page from their committed outputs. Original academic source code and annotated presentations are not distributed here. See each project's README for source requirements and tests.
 
-The original Sleep academic case study is retained at its existing URL as an archive and is no longer listed in the portfolio showcase. Its source, team credits and project history remain intact.
-
-## Check the website
+## Check the site
 
 ```bash
 python scripts/check_site.py
 ```
 
-Requires Python 3.11+ and Node.js. Checks local page links, fragment targets, duplicate IDs, images, CSS assets, dashboard data files, JSON, and JavaScript syntax. External destinations need a separate online check. Also inspect the site in a browser and exercise its filters before publishing.
+Requires Python 3.11+ and Node.js. Checks local links, anchors, assets, JSON and JavaScript syntax. Browser interactions and external destinations require separate checks.
 
-## Background artwork
+## Maintenance
 
-The opening section uses a custom generated analyst-workspace image, with CSS desaturation and a navy overlay for readable text and a smaller image for narrow screens. Case notes keep their clean light background. The photograph is illustrative, and its decorative charts are unrelated to the working demo's data. [Asset files and generation prompt](assets/README.md).
+GitHub Pages publishes the root of `main`. Keep `.nojekyll`. The claims `demo/` mirrors the dashboard in `healthcare-claims-analytics`; prescription and AI project pages mirror their analysis repositories. Keep copies aligned when changing them.
 
-## View locally
-
-Run `python -m http.server 8000` from the repository root, then visit `http://localhost:8000/`. A local server lets the project dashboards load their JSON files. There are no dependencies or build steps. Core content and case studies remain available without JavaScript.
-
-## Website
-
-[View the portfolio](https://devaharshagubbala07-hub.github.io/).
-
-GitHub Pages serves the site from the `main` branch and repository root. Update the HTML, CSS, or JavaScript and commit to `main` to publish changes. Keep `.nojekyll` in the root.
-
-See [GitHub Pages documentation](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site).
+The navy layout includes a generated, decorative analyst-workspace image. Its charts do not represent the project data. [Artwork details](assets/README.md).

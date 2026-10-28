@@ -1,6 +1,6 @@
-# Understand the project before presenting it
+# Hospital readmissions analysis walkthrough
 
-This guide is for learning and discussion. Describe this as an independent portfolio project created in September 2026 with AI assistance. Do not present it as master's coursework or a Merative client assignment.
+This guide explains the independent, AI-assisted portfolio analysis created in September 2026. It is separate from graduate coursework and Merative work.
 
 ## Questions to be ready for
 
